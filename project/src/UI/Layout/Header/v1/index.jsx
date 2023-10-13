@@ -19,6 +19,10 @@ import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 
 import { useAuth } from '@/hooks/auth'
 
+import { useBarStore } from "@/store/bar";
+const { visibleBar } = useBarStore;
+
+
 const navigation = [
   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
   { name: 'Team', href: '#', icon: UsersIcon, current: false },
@@ -42,7 +46,9 @@ function classNames(...classes) {
 }
 
 export default function Example() {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+//   const [sidebarOpen, setSidebarOpen] = useState(false)
+    const { currentVisibleBar, openVisibleBar } = visibleBar();
+
 const { user } = useAuth({ middleware: 'auth' })
 
   return (
@@ -55,8 +61,8 @@ const { user } = useAuth({ middleware: 'auth' })
               {/* Separator */}
 <button
                                 type="button"
-                                className="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-                                onClick={() => setSidebarOpen(true)}>
+                                className="border-r border-gray-200 px-4 text-gray-500 focus:outline-none"
+                                onClick={() => openVisibleBar()}>
                                 <span className="sr-only">Open sidebar</span>
                                 <Bars3BottomLeftIcon
                                     className="h-6 w-6"
@@ -66,7 +72,7 @@ const { user } = useAuth({ middleware: 'auth' })
               <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
                 <form className="relative flex flex-1" action="#" method="GET">
                   <label htmlFor="search-field" className="sr-only">
-                    Search
+                    Поиск
                   </label>
                   <MagnifyingGlassIcon
                     className="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"

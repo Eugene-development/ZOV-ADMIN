@@ -12,6 +12,9 @@ import {
   XMarkIcon
 } from '@heroicons/react/24/outline'
 
+import { useBarStore } from "@/store/bar";
+const { visibleBar } = useBarStore;
+
 
 const navigation = [
   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
@@ -46,11 +49,13 @@ function classNames(...classes) {
 }
 
 export default function Example() {
+  const { currentVisibleBar, closeVisibleBar } = visibleBar();
+
   const [open, setOpen] = useState(true)
 
   return (
-    <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-50" onClose={setOpen}>
+    <Transition.Root show={currentVisibleBar} as={Fragment}>
+      <Dialog as="div" className="relative z-50" onClose={closeVisibleBar}>
         <div className="fixed inset-0" />
 
         <div className="fixed inset-0 overflow-hidden">
@@ -76,7 +81,7 @@ export default function Example() {
                           <button
                             type="button"
                             className="relative rounded-md bg-gray-700 text-gray-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-                            onClick={() => setOpen(false)}
+                            onClick={() => closeVisibleBar()}
                           >
                             <span className="absolute -inset-2.5" />
                             <span className="sr-only">Close panel</span>
