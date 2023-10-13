@@ -40,7 +40,8 @@ const Register = () => {
                     <Link href="/">
                         <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
                     </Link>
-                }>
+                }
+            >
                 <form onSubmit={submitForm}>
                     {/* Name */}
                     <div>
@@ -121,7 +122,8 @@ const Register = () => {
                     <div className="flex items-center justify-end mt-4">
                         <Link
                             href="/login"
-                            className="underline text-sm text-gray-600 hover:text-gray-900">
+                            className="underline text-sm text-gray-600 hover:text-gray-900"
+                        >
                             Already registered?
                         </Link>
 
