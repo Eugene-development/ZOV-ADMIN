@@ -40,18 +40,12 @@ const teams = [
     { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
     { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
 ]
-const userNavigation = [
-    { name: 'Your profile', href: '#' },
-    { name: 'Sign out', href: '#' },
-]
-
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 export default function Example() {
-    //   const [sidebarOpen, setSidebarOpen] = useState(false)
-    const { currentVisibleBar, openVisibleBar } = visibleBar()
+    const { openVisibleBar } = visibleBar()
 
     const { user } = useAuth({ middleware: 'auth' })
     const { logout } = useAuth()
@@ -193,7 +187,7 @@ export default function Example() {
 
                     <main className="py-10">
                         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                            {/* Your content */}
+                            {/* Your content */}uuu
                         </div>
                     </main>
                 </div>
