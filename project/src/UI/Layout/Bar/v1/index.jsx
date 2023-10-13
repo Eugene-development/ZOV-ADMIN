@@ -12,6 +12,7 @@ import {
   XMarkIcon
 } from '@heroicons/react/24/outline'
 
+
 const navigation = [
   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
   {
@@ -40,7 +41,7 @@ const navigation = [
   { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
 ]
 
-function classNames(...classes: any) {
+function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -49,7 +50,7 @@ export default function Example() {
 
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setOpen}>
+      <Dialog as="div" className="relative z-50" onClose={setOpen}>
         <div className="fixed inset-0" />
 
         <div className="fixed inset-0 overflow-hidden">
@@ -64,11 +65,9 @@ export default function Example() {
                 leaveFrom="translate-x-0"
                 leaveTo="-translate-x-full"
                 >
-
-
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
                   <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
-                    <div className="bg-indigo-700 px-4 py-6 sm:px-6">
+                    <div className="bg-gray-700 px-4 py-6 sm:px-6">
                       <div className="flex items-center justify-between">
                         <Dialog.Title className="text-base font-semibold leading-6 text-white">
                           Panel title
@@ -76,7 +75,7 @@ export default function Example() {
                         <div className="ml-3 flex h-7 items-center">
                           <button
                             type="button"
-                            className="relative rounded-md bg-indigo-700 text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+                            className="relative rounded-md bg-gray-700 text-gray-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
                             onClick={() => setOpen(false)}
                           >
                             <span className="absolute -inset-2.5" />
@@ -86,7 +85,7 @@ export default function Example() {
                         </div>
                       </div>
                       <div className="mt-1">
-                        <p className="text-sm text-indigo-300">
+                        <p className="text-sm text-gray-300">
                           Lorem, ipsum dolor sit amet consectetur adipisicing elit aliquam ad hic recusandae soluta.
                         </p>
                       </div>
@@ -131,7 +130,7 @@ export default function Example() {
                             />
                           </Disclosure.Button>
                           <Disclosure.Panel as="ul" className="mt-1 px-2">
-                            {item.children.map((subItem: any) => (
+                            {item.children.map((subItem) => (
                               <li key={subItem.name}>
                                 {/* 44px */}
                                 <Disclosure.Button
