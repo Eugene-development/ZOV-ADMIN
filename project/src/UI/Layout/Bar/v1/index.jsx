@@ -17,9 +17,9 @@ const { visibleBar } = useBarStore;
 
 
 const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
+  { name: 'Главная', href: '/dashboard', icon: HomeIcon, current: true },
   {
-    name: 'Teams',
+    name: 'Команда',
     icon: UsersIcon,
     current: false,
     children: [
@@ -29,19 +29,18 @@ const navigation = [
     ],
   },
   {
-    name: 'Projects',
+    name: 'Продукция',
     icon: FolderIcon,
     current: false,
     children: [
-      { name: 'GraphQL API', href: '#' },
-      { name: 'iOS App', href: '#' },
-      { name: 'Android App', href: '#' },
-      { name: 'New Customer Portal', href: '#' },
+      { name: 'Каталог', href: '/catalog' },
+      { name: 'Рубрики', href: '/rubrics' },
+      { name: 'Категории', href: '/categories' },
+      { name: 'Продукт', href: '/products' },
     ],
   },
-  { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-  { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
-  { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
+  { name: 'Блог', href: '/blog', icon: DocumentDuplicateIcon, current: false },
+  { name: 'СЕО', href: '/seo', icon: ChartPieIcon, current: false },
 ]
 
 function classNames(...classes) {
@@ -72,7 +71,7 @@ export default function Example() {
                 >
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
                   <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
-                    <div className="bg-gray-700 px-4 py-6 sm:px-6">
+                    <div className="bg-gray-800 px-4 py-6 sm:px-6">
                       <div className="flex items-center justify-between">
                         <Dialog.Title className="text-base font-semibold leading-6 text-white">
                           Panel title
@@ -80,7 +79,7 @@ export default function Example() {
                         <div className="ml-3 flex h-7 items-center">
                           <button
                             type="button"
-                            className="relative rounded-md bg-gray-700 text-gray-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+                            className="relative rounded-md bg-gray-800 text-gray-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
                             onClick={() => closeVisibleBar()}
                           >
                             <span className="absolute -inset-2.5" />

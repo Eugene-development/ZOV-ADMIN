@@ -50,6 +50,7 @@ export default function Example() {
     const { currentVisibleBar, openVisibleBar } = visibleBar();
 
 const { user } = useAuth({ middleware: 'auth' })
+const { logout } = useAuth()
 
   return (
     <>
@@ -121,21 +122,35 @@ const { user } = useAuth({ middleware: 'auth' })
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <Menu.Items className="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
-                        {userNavigation.map((item) => (
-                          <Menu.Item key={item.name}>
+
+                          <Menu.Item >
                             {({ active }) => (
                               <a
-                                href={item.href}
+                                href="/profile"
                                 className={classNames(
                                   active ? 'bg-gray-50' : '',
                                   'block px-3 py-1 text-sm leading-6 text-gray-900'
                                 )}
                               >
-                                {item.name}
+                                Ваш профиль
                               </a>
                             )}
                           </Menu.Item>
-                        ))}
+
+                          <Menu.Item >
+                            {({ active }) => (
+                              <div
+                              onClick={logout}
+                                className={classNames(
+                                  active ? 'bg-gray-50 cursor-pointer' : '',
+                                  'block px-3 py-1 text-sm leading-6 text-gray-900'
+                                )}
+                              >
+                                Выйти
+                              </div>
+                            )}
+                          </Menu.Item>
+
                       </Menu.Items>
                     </Transition>
                   </Menu>
