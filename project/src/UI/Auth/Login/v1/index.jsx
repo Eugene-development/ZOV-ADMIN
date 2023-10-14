@@ -1,3 +1,4 @@
+"use client"
 import ApplicationLogo from '@/components/ApplicationLogo'
 import AuthCard from '@/components/AuthCard'
 import AuthSessionStatus from '@/components/AuthSessionStatus'
@@ -9,7 +10,8 @@ import Label from '@/components/Label'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
+
 
 const Login = () => {
     const router = useRouter()
@@ -25,42 +27,33 @@ const Login = () => {
     const [errors, setErrors] = useState([])
     const [status, setStatus] = useState(null)
 
-    useEffect(() => {
-        if (router.query.reset?.length > 0 && errors.length === 0) {
-            setStatus(atob(router.query.reset))
-        } else {
-            setStatus(null)
-        }
-    })
+    // useEffect(() => {
+    //     if (router.query.reset?.length > 0 && errors.length === 0) {
+    //         setStatus(atob(router.query.reset))
+    //     } else {
+    //         setStatus(null)
+    //     }
+    // })
 
     const submitForm = async event => {
         event.preventDefault()
 
-        login({
-            email,
-            password,
-            remember: shouldRemember,
-            setErrors,
-            setStatus,
-        })
+        login({ email, password, remember: shouldRemember, setErrors, setStatus })
     }
 
     return (
-        <GuestLayout>
-            <AuthCard
-                logo={
-                    <Link href="/">
-                        <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
-                    </Link>
-                }
-            >
-                {/* Session Status */}
-                <AuthSessionStatus className="mb-4" status={status} />
+        <>
+            <div className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+        {/* <div>{logo}</div> */}
 
-                <form onSubmit={submitForm}>
+        <div className="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+
+
+
+        <form onSubmit={submitForm}>
                     {/* Email Address */}
                     <div>
-                        <Label htmlFor="email">Email</Label>
+                        {/* <Label htmlFor="email">Почта</Label> */}
 
                         <Input
                             id="email"
@@ -69,7 +62,7 @@ const Login = () => {
                             className="block mt-1 w-full"
                             onChange={event => setEmail(event.target.value)}
                             required
-                            autoFocus
+                            // autoFocus
                         />
 
                         <InputError messages={errors.email} className="mt-2" />
@@ -77,7 +70,7 @@ const Login = () => {
 
                     {/* Password */}
                     <div className="mt-4">
-                        <Label htmlFor="password">Password</Label>
+                        <Label htmlFor="password">Пароль</Label>
 
                         <Input
                             id="password"
@@ -89,47 +82,43 @@ const Login = () => {
                             autoComplete="current-password"
                         />
 
-                        <InputError
-                            messages={errors.password}
-                            className="mt-2"
-                        />
+                        {/* <InputError messages={errors.password} className="mt-2" /> */}
                     </div>
 
                     {/* Remember Me */}
                     <div className="block mt-4">
                         <label
                             htmlFor="remember_me"
-                            className="inline-flex items-center"
-                        >
+                            className="inline-flex items-center">
                             <input
                                 id="remember_me"
                                 type="checkbox"
                                 name="remember"
                                 className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                onChange={event =>
-                                    setShouldRemember(event.target.checked)
-                                }
+                                onChange={event => setShouldRemember(event.target.checked)}
                             />
 
                             <span className="ml-2 text-sm text-gray-600">
-                                Remember me
+                                Запомнить меня
                             </span>
                         </label>
                     </div>
 
                     <div className="flex items-center justify-end mt-4">
-                        <Link
-                            href="/forgot-password"
-                            className="underline text-sm text-gray-600 hover:text-gray-900"
-                        >
-                            Forgot your password?
+                        <Link href="/forgot-password" className="underline text-sm text-gray-600 hover:text-gray-900">
+
+                                Забыли пароль?
+
                         </Link>
 
-                        <Button className="ml-3">Login</Button>
+                        <Button className="ml-3">Войти</Button>
                     </div>
                 </form>
-            </AuthCard>
-        </GuestLayout>
+                </div>
+    </div>
+
+        </>
+
     )
 }
 
