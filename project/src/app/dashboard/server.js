@@ -11,8 +11,11 @@ export const CATEGORY = gql`
 export async function getCategory() {
 	const url = process.env.NEXT_PUBLIC_GRAPHQL
 	const variables = {
-		key: '1',
-
+		key: process.env.NEXT_PUBLIC_KEY,
 	}
-	return await request(url, CATEGORY, variables)
+    const requestHeaders = {
+        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME
+    }
+
+	return await request(url, CATEGORY, variables, requestHeaders)
 }
