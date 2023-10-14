@@ -35,7 +35,7 @@ const navigation = [
             { name: 'Каталог', href: '/catalog' },
             { name: 'Рубрики', href: '/rubrics' },
             { name: 'Категории', href: '/categories' },
-            { name: 'Продукт', href: '/products' },
+            { name: 'Товары', href: '/products' },
         ],
     },
     {
@@ -77,12 +77,12 @@ export default function Example() {
                                 leaveFrom="translate-x-0"
                                 leaveTo="-translate-x-full"
                             >
-                                <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
+                                <Dialog.Panel className="pointer-events-auto w-screen max-w-sm">
                                     <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                                         <div className="bg-gray-800 px-4 py-6 sm:px-6">
                                             <div className="flex items-center justify-between">
                                                 <Dialog.Title className="text-base font-semibold leading-6 text-white">
-                                                    Panel title
+                                                    Проект "ЗОВ"
                                                 </Dialog.Title>
                                                 <div className="ml-3 flex h-7 items-center">
                                                     <button
@@ -103,14 +103,14 @@ export default function Example() {
                                                     </button>
                                                 </div>
                                             </div>
-                                            <div className="mt-1">
+                                            {/* <div className="mt-1">
                                                 <p className="text-sm text-gray-300">
                                                     Lorem, ipsum dolor sit amet
                                                     consectetur adipisicing elit
                                                     aliquam ad hic recusandae
                                                     soluta.
                                                 </p>
-                                            </div>
+                                            </div> */}
                                         </div>
                                         <div className="relative flex-1 px-4 py-6 sm:px-6">
                                             <nav className="flex flex-1 flex-col">
