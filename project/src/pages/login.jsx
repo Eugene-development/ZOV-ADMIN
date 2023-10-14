@@ -47,7 +47,7 @@ const Login = () => {
                     <Link href="/">
 
                             <ApplicationLogo className="w-20 h-20 fill-current" />
-                        
+
                     </Link>
                 }>
 
@@ -90,7 +90,7 @@ const Login = () => {
                     </div>
 
                     {/* Remember Me */}
-                    <div className="block mt-4">
+                    {/* <div className="block mt-4">
                         <label
                             htmlFor="remember_me"
                             className="inline-flex items-center">
@@ -107,11 +107,11 @@ const Login = () => {
                             </span>
                         </label>
                     </div>
-
+ */}
                     <div className="flex items-center justify-end mt-4">
-                        <Link href="/forgot-password" className="underline text-sm text-gray-600 hover:text-gray-900">
+                        <Link href="/register" className="underline text-sm text-gray-600 hover:text-gray-900">
 
-                                Забыли пароль?
+                                Зарегистрироваться
 
                         </Link>
 
