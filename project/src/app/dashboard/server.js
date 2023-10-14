@@ -31,6 +31,36 @@ const CREATE_CATEGORY = gql`
     }
 `
 
+const UPDATE_CATEGORY = gql`
+    mutation update_category(
+        $id: ID!
+        $key: String!
+        $is_active: Boolean
+        $value: String!
+        $slug: String
+        $parentableType: String
+        $parentableId: Int
+        # $updateSeoTitle: UpdateSeoTitleInput!
+        # $updateSeoDescription: UpdateSeoDescriptionInput!
+    ) {
+        updateCategory(
+            input: {
+                id: $id
+                key: $key
+                is_active: $is_active
+                value: $value
+                slug: $slug
+                parentable_type: $parentableType
+                parentable_id: $parentableId
+                # seoTitle: { update: $updateSeoTitle }
+                # seoDescription: { update: $updateSeoDescription }
+            }
+        ) {
+            value
+        }
+    }
+`
+
 export const DELETE_CATEGORY = gql`
     mutation delete_category($id: ID!) {
         deleteCategory(id: $id) {
@@ -67,6 +97,24 @@ export async function createCategory() {
     }
 
     return await request(url, CREATE_CATEGORY, variables, requestHeaders)
+}
+
+export async function updateCategory() {
+    const url = process.env.NEXT_PUBLIC_GRAPHQL
+    const variables = {
+        id: "1",
+        key: process.env.NEXT_PUBLIC_KEY,
+        is_active: false,
+        value: "kkkkkkk",
+        slug: "kkkkkkk",
+        parentableType: "catalog",
+        parentableId: 16
+    }
+    const requestHeaders = {
+        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
+    }
+
+    return await request(url, UPDATE_CATEGORY, variables, requestHeaders)
 }
 
 
