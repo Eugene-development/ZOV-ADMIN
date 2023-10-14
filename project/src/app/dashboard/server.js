@@ -1,6 +1,6 @@
 import { gql, request } from 'graphql-request'
 
-export const CATEGORY = gql`
+const CATEGORY = gql`
     query category {
         category {
             value
@@ -26,6 +26,14 @@ const CREATE_CATEGORY = gql`
                 parentable_id: $parentableId
             }
         ) {
+            value
+        }
+    }
+`
+
+export const DELETE_CATEGORY = gql`
+    mutation delete_category($id: ID!) {
+        deleteCategory(id: $id) {
             value
         }
     }
@@ -59,4 +67,17 @@ export async function createCategory() {
     }
 
     return await request(url, CREATE_CATEGORY, variables, requestHeaders)
+}
+
+
+export async function deleteCategory() {
+    const url = process.env.NEXT_PUBLIC_GRAPHQL
+    const variables = {
+        id: "4",
+    }
+    const requestHeaders = {
+        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
+    }
+
+    return await request(url, DELETE_CATEGORY, variables, requestHeaders)
 }

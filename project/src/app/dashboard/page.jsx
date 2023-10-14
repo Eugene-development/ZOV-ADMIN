@@ -1,13 +1,11 @@
-import { useQuery, gql } from '@apollo/client'
 import { getClient } from '@/lib/ApolloClient'
-import { getCategory, createCategory } from './server'
+import { getCategory, createCategory, deleteCategory } from './server'
 
 const Dashboard = async () => {
     const client = getClient()
-    // const { data } = await client.query(CATEGORY)
-    // const { loading, data } = useQuery (CATEGORY) ;
     // const data = await getCategory()
-    const data = await createCategory()
+    // const data = await createCategory()
+    const data = await deleteCategory()
     console.log(data)
     return (
         <>
