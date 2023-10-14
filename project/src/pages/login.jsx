@@ -11,7 +11,6 @@ import { useAuth } from '@/hooks/auth'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
-
 const Login = () => {
     const router = useRouter()
 
@@ -37,7 +36,13 @@ const Login = () => {
     const submitForm = async event => {
         event.preventDefault()
 
-        login({ email, password, remember: shouldRemember, setErrors, setStatus })
+        login({
+            email,
+            password,
+            remember: shouldRemember,
+            setErrors,
+            setStatus,
+        })
     }
 
     return (
@@ -45,12 +50,10 @@ const Login = () => {
             <AuthCard
                 logo={
                     <Link href="/">
-
-                            <ApplicationLogo className="w-20 h-20 fill-current" />
-
+                        <ApplicationLogo className="w-20 h-20 fill-current" />
                     </Link>
-                }>
-
+                }
+            >
                 {/* Session Status */}
                 <AuthSessionStatus className="mb-4" status={status} />
 
@@ -86,7 +89,10 @@ const Login = () => {
                             autoComplete="current-password"
                         />
 
-                        <InputError messages={errors.password} className="mt-2" />
+                        <InputError
+                            messages={errors.password}
+                            className="mt-2"
+                        />
                     </div>
 
                     {/* Remember Me */}
@@ -109,10 +115,11 @@ const Login = () => {
                     </div>
  */}
                     <div className="flex items-center justify-end mt-4">
-                        <Link href="/register" className="underline text-sm text-gray-600 hover:text-gray-900">
-
-                                Зарегистрироваться
-
+                        <Link
+                            href="/register"
+                            className="underline text-sm text-gray-600 hover:text-gray-900"
+                        >
+                            Зарегистрироваться
                         </Link>
 
                         <Button className="ml-3">Войти</Button>

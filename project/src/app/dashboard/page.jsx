@@ -1,15 +1,13 @@
-import { useQuery, gql } from "@apollo/client"
-import { getClient } from "@/lib/ApolloClient"
-import { getCategory } from "./server"
-
-
+import { useQuery, gql } from '@apollo/client'
+import { getClient } from '@/lib/ApolloClient'
+import { getCategory } from './server'
 
 const Dashboard = async () => {
-    const client = getClient();
+    const client = getClient()
     // const { data } = await client.query(CATEGORY)
     // const { loading, data } = useQuery (CATEGORY) ;
     const data = await getCategory()
-    console.log (data)
+    console.log(data)
     return (
         <>
             <div className="py-12">
