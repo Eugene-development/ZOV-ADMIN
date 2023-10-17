@@ -1,4 +1,5 @@
 import { gql, request } from 'graphql-request'
+import { v4 as uuidv4 } from 'uuid'
 
 const CATEGORY = gql`
     query category {
@@ -9,6 +10,7 @@ const CATEGORY = gql`
 `
 const CREATE_CATEGORY = gql`
     mutation create_category(
+        $id: String!
         $key: String!
         $is_active: Boolean
         $value: String!
@@ -18,6 +20,7 @@ const CREATE_CATEGORY = gql`
     ) {
         createCategory(
             input: {
+                id: $id
                 key: $key
                 is_active: $is_active
                 value: $value
@@ -33,14 +36,13 @@ const CREATE_CATEGORY = gql`
 
 const UPDATE_CATEGORY = gql`
     mutation update_category(
-        $id: ID!
+        $id: String!
         $key: String!
         $is_active: Boolean
         $value: String!
         $slug: String
         $parentableType: String
-        $parentableId: Int
-        # $updateSeoTitle: UpdateSeoTitleInput!
+        $parentableId: Int # $updateSeoTitle: UpdateSeoTitleInput!
         # $updateSeoDescription: UpdateSeoDescriptionInput!
     ) {
         updateCategory(
@@ -69,7 +71,6 @@ export const DELETE_CATEGORY = gql`
     }
 `
 
-
 export async function getCategory() {
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
@@ -85,12 +86,13 @@ export async function getCategory() {
 export async function createCategory() {
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
+        id: uuidv4(),
         key: process.env.NEXT_PUBLIC_KEY,
         is_active: false,
-        value: "kkkkkkk",
-        slug: "kkkkkkk",
-        parentableType: "catalog",
-        parentableId: 16
+        value: '777',
+        slug: 'kkkkkkk',
+        parentableType: 'catalog',
+        parentableId: 16,
     }
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
@@ -102,13 +104,13 @@ export async function createCategory() {
 export async function updateCategory() {
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
-        id: "1",
+        id: '1',
         key: process.env.NEXT_PUBLIC_KEY,
         is_active: false,
-        value: "kkkkkkk",
-        slug: "kkkkkkk",
-        parentableType: "catalog",
-        parentableId: 16
+        value: 'kkkkkkk',
+        slug: 'kkkkkkk',
+        parentableType: 'catalog',
+        parentableId: 16,
     }
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
@@ -117,11 +119,10 @@ export async function updateCategory() {
     return await request(url, UPDATE_CATEGORY, variables, requestHeaders)
 }
 
-
 export async function deleteCategory() {
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
-        id: "4",
+        id: '4',
     }
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,

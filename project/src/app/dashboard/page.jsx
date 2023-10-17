@@ -1,8 +1,10 @@
-import { getClient } from '@/lib/ApolloClient'
+// import { getClient } from '@/lib/ApolloClient'
+
 import { getCategory, createCategory, updateCategory, deleteCategory } from './server'
 
 const Dashboard = async () => {
-    const client = getClient()
+    // const client = getClient()
+
     // const data = await getCategory()
     // const data = await createCategory()
     const data = await updateCategory()
