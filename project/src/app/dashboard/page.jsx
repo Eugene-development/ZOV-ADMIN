@@ -7,8 +7,8 @@ const Dashboard = async () => {
 
     // const data = await getCategory()
     // const data = await createCategory()
-    const data = await updateCategory()
-    // const data = await deleteCategory()
+    // const data = await updateCategory()
+    const data = await deleteCategory()
     console.log(data)
     return (
         <>

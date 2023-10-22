@@ -105,10 +105,10 @@ export async function createCategory() {
 export async function updateCategory() {
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
-        id: 'oo36d92r-b456-4106-b01f-e6fe7ca178a7',
+        id: '8c1b0862-4552-4219-a277-9ba40d48bfc9',
         key: process.env.NEXT_PUBLIC_KEY,
         is_active: false,
-        value: 'uiuiuiuiuiu',
+        value: 'aaaaaaaaâ',
         slug: 'kkkkkkk',
         parentableType: 'catalog',
         parentableId: 16,
@@ -123,7 +123,7 @@ export async function updateCategory() {
 export async function deleteCategory() {
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
-        id: '4',
+        id: '63f2e83a-41b8-4c30-895e-9c4e2368a2f5',
     }
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
