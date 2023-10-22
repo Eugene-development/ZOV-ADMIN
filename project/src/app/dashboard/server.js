@@ -29,6 +29,7 @@ const CREATE_CATEGORY = gql`
                 parentable_id: $parentableId
             }
         ) {
+            id
             value
         }
     }
@@ -43,8 +44,8 @@ const UPDATE_CATEGORY = gql`
         $slug: String
         $parentableType: String
         $parentableId: Int # $updateSeoTitle: UpdateSeoTitleInput!
-        # $updateSeoDescription: UpdateSeoDescriptionInput!
-    ) {
+    ) # $updateSeoDescription: UpdateSeoDescriptionInput!
+    {
         updateCategory(
             input: {
                 id: $id
@@ -88,8 +89,8 @@ export async function createCategory() {
     const variables = {
         id: uuidv4(),
         key: process.env.NEXT_PUBLIC_KEY,
-        is_active: false,
-        value: '777',
+        is_active: true,
+        value: '999',
         slug: 'kkkkkkk',
         parentableType: 'catalog',
         parentableId: 16,
@@ -104,10 +105,10 @@ export async function createCategory() {
 export async function updateCategory() {
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
-        id: '1',
+        id: 'oo36d92r-b456-4106-b01f-e6fe7ca178a7',
         key: process.env.NEXT_PUBLIC_KEY,
         is_active: false,
-        value: 'kkkkkkk',
+        value: 'uiuiuiuiuiu',
         slug: 'kkkkkkk',
         parentableType: 'catalog',
         parentableId: 16,
