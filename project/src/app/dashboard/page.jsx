@@ -1,15 +1,17 @@
-// import { getClient } from '@/lib/ApolloClient'
 
 import { getCategory, createCategory, updateCategory, deleteCategory } from './server'
+import { usePathname, useSearchParams } from 'next/navigation'
 
-const Dashboard = async () => {
+const Dashboard = async (request) => {
     // const client = getClient()
-
+// const pathname = usePathname()
     // const data = await getCategory()
-    // const data = await createCategory()
+    const data = await createCategory()
+    // const path = request.nextUrl.searchParams.get('path')
     // const data = await updateCategory()
-    const data = await deleteCategory()
-    console.log(data)
+    // const data = await deleteCategory()
+    // console.log(pathname)
+    // revalidatePath(pathname)
     return (
         <>
             <div className="py-12">

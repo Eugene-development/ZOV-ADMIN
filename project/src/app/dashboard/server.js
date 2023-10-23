@@ -1,16 +1,18 @@
 import { gql, request } from 'graphql-request'
 import { v4 as uuidv4 } from 'uuid'
+import { revalidatePath } from 'next/cache'
 
 const CATEGORY = gql`
     query category {
         category {
+            id
             value
         }
     }
 `
 const CREATE_CATEGORY = gql`
     mutation create_category(
-        $id: String!
+        $id: ID!
         $key: String!
         $is_active: Boolean
         $value: String!
@@ -87,10 +89,11 @@ export async function getCategory() {
 export async function createCategory() {
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
+        // id: 'ergkmgk',
         id: uuidv4(),
         key: process.env.NEXT_PUBLIC_KEY,
         is_active: true,
-        value: '999',
+        value: 'eeeeeee2',
         slug: 'kkkkkkk',
         parentableType: 'catalog',
         parentableId: 16,
@@ -98,7 +101,7 @@ export async function createCategory() {
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
     }
-
+    // revalidatePath(pathname)
     return await request(url, CREATE_CATEGORY, variables, requestHeaders)
 }
 
