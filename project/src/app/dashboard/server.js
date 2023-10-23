@@ -12,13 +12,13 @@ const CATEGORY = gql`
 `
 const CREATE_CATEGORY = gql`
     mutation create_category(
-        $id: ID!
-        $key: String!
+        $id: UUID!
+        $key: UUID!
         $is_active: Boolean
         $value: String!
         $slug: String!
         $parentableType: String
-        $parentableId: Int!
+        $parentableId: UUID!
     ) {
         createCategory(
             input: {
@@ -39,15 +39,15 @@ const CREATE_CATEGORY = gql`
 
 const UPDATE_CATEGORY = gql`
     mutation update_category(
-        $id: String!
+        $id: UUID!
         $key: String!
         $is_active: Boolean
         $value: String!
         $slug: String
         $parentableType: String
-        $parentableId: Int # $updateSeoTitle: UpdateSeoTitleInput!
-    ) # $updateSeoDescription: UpdateSeoDescriptionInput!
-    {
+        $parentableId: UUID # $updateSeoDescription: UpdateSeoDescriptionInput!
+        # $updateSeoTitle: UpdateSeoTitleInput!
+    ) {
         updateCategory(
             input: {
                 id: $id
@@ -67,7 +67,7 @@ const UPDATE_CATEGORY = gql`
 `
 
 export const DELETE_CATEGORY = gql`
-    mutation delete_category($id: ID!) {
+    mutation delete_category($id: UUID!) {
         deleteCategory(id: $id) {
             value
         }
@@ -89,14 +89,13 @@ export async function getCategory() {
 export async function createCategory() {
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
-        // id: 'ergkmgk',
         id: uuidv4(),
         key: process.env.NEXT_PUBLIC_KEY,
         is_active: true,
         value: 'eeeeeee2',
         slug: 'kkkkkkk',
         parentableType: 'catalog',
-        parentableId: 16,
+        parentableId: '8297afac-57bf-4886-8767-669e36044390',
     }
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
@@ -108,13 +107,13 @@ export async function createCategory() {
 export async function updateCategory() {
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
-        id: '8c1b0862-4552-4219-a277-9ba40d48bfc9',
+        id: 'b10f0921-45b0-4aa1-b022-8b1dcc2faa95',
         key: process.env.NEXT_PUBLIC_KEY,
         is_active: false,
         value: 'aaaaaaaaâ',
         slug: 'kkkkkkk',
         parentableType: 'catalog',
-        parentableId: 16,
+        parentableId: '8297afac-57bf-4886-8767-669e36044390',
     }
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
@@ -126,7 +125,7 @@ export async function updateCategory() {
 export async function deleteCategory() {
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
-        id: '63f2e83a-41b8-4c30-895e-9c4e2368a2f5',
+        id: 'b10f0921-45b0-4aa1-b022-8b1dcc2faa95',
     }
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,

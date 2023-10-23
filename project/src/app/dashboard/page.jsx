@@ -10,7 +10,7 @@ const Dashboard = async (request) => {
     // const path = request.nextUrl.searchParams.get('path')
     // const data = await updateCategory()
     // const data = await deleteCategory()
-    // console.log(pathname)
+    console.log(data)
     // revalidatePath(pathname)
     return (
         <>
