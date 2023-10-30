@@ -1,5 +1,11 @@
 import { gql, request } from 'graphql-request'
 import { v4 as uuidv4 } from 'uuid'
+import { useAuth } from '@/hooks/auth'
+
+export async function getUser() {
+    const { user } = useAuth({ middleware: 'guest' })
+    return user
+}
 
 const RUBRICS = gql`
     query rubric {

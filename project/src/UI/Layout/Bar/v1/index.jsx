@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import { Fragment, useState } from 'react'
 import { Dialog, Transition, Disclosure } from '@headlessui/react'
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
@@ -28,14 +29,14 @@ const navigation = [
         ],
     },
     {
-        name: 'Продукция',
+        name: 'Каталог',
         icon: FolderIcon,
         current: false,
         children: [
-            { name: 'Каталог', href: '/catalog' },
-            { name: 'Рубрики', href: '/rubrics' },
-            { name: 'Категории', href: '/categories' },
-            { name: 'Товары', href: '/products' },
+            { name: 'Меню', href: '/menu' },
+            { name: 'Рубрика', href: '/rubrics' },
+            { name: 'Категория', href: '/categories' },
+            { name: 'Продукт', href: '/products' },
         ],
     },
     {
@@ -131,7 +132,7 @@ export default function Example() {
                                                                         }
                                                                     >
                                                                         {!item.children ? (
-                                                                            <a
+                                                                            <Link rel="prefetch"
                                                                                 href={
                                                                                     item.href
                                                                                 }
@@ -139,7 +140,7 @@ export default function Example() {
                                                                                     item.current
                                                                                         ? 'bg-gray-50'
                                                                                         : 'hover:bg-gray-50',
-                                                                                    'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-gray-700',
+                                                                                    'group flex gap-x-3 rounded-md p-2 text-base leading-6 font-semibold text-gray-700',
                                                                                 )}
                                                                             >
                                                                                 <item.icon
@@ -149,7 +150,7 @@ export default function Example() {
                                                                                 {
                                                                                     item.name
                                                                                 }
-                                                                            </a>
+                                                                            </Link>
                                                                         ) : (
                                                                             <Disclosure as="div">
                                                                                 {({
@@ -161,7 +162,7 @@ export default function Example() {
                                                                                                 item.current
                                                                                                     ? 'bg-gray-50'
                                                                                                     : 'hover:bg-gray-50',
-                                                                                                'flex items-center w-full text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-semibold text-gray-700',
+                                                                                                'flex items-center w-full text-left rounded-md p-2 gap-x-3 text-base leading-6 font-semibold text-gray-700',
                                                                                             )}
                                                                                         >
                                                                                             <item.icon
@@ -187,28 +188,26 @@ export default function Example() {
                                                                                         >
                                                                                             {item.children.map(
                                                                                                 subItem => (
-                                                                                                    <li
+                                                                                                    <li className='hover:bg-gray-50'
                                                                                                         key={
                                                                                                             subItem.name
                                                                                                         }
                                                                                                     >
                                                                                                         {/* 44px */}
-                                                                                                        <Disclosure.Button
-                                                                                                            as="a"
-                                                                                                            href={
-                                                                                                                subItem.href
-                                                                                                            }
-                                                                                                            className={classNames(
-                                                                                                                subItem.current
-                                                                                                                    ? 'bg-gray-50'
-                                                                                                                    : 'hover:bg-gray-50',
-                                                                                                                'block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700',
-                                                                                                            )}
-                                                                                                        >
-                                                                                                            {
-                                                                                                                subItem.name
-                                                                                                            }
-                                                                                                        </Disclosure.Button>
+                                                                                                       <Link  href={ subItem.href }>
+                                                                                                            <Disclosure.Button
+                                                                                                                className={classNames(
+                                                                                                                    subItem.current
+                                                                                                                        ? 'bg-gray-50'
+                                                                                                                        : 'hover:bg-gray-50',
+                                                                                                                    'block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700',
+                                                                                                                )}
+                                                                                                            >
+                                                                                                                {
+                                                                                                                    subItem.name
+                                                                                                                }
+                                                                                                            </Disclosure.Button>
+                                                                                                        </Link>
                                                                                                     </li>
                                                                                                 ),
                                                                                             )}

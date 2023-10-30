@@ -1,9 +1,12 @@
-// "use client"
+
 import { getRubrics } from "./server"
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
 export default async () => {
+
     const data = await getRubrics()
-    console.log(data)
   return (
     <>
       {/* {data.rubric.map((feature) => (
@@ -40,7 +43,7 @@ export default async () => {
                                     <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                     <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                                         <div className="relative overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                                            {selectedRubric.length > 0 && (
+                                            {data.rubric.length > 0 && (
                                                 <div className="absolute top-0 left-12 flex h-12 items-center space-x-3 bg-gray-50 sm:left-16">
                                                 {/* <button
                                                     type="button"
@@ -49,10 +52,10 @@ export default async () => {
                                                     Изменить
                                                 </button> */}
                                                             <button
-                                                                onClick={() => {
+                                                                // onClick={() => {
 
-                                                                    }
-                                                                }
+                                                                //     }
+                                                                // }
                                                                 type="button"
                                                                 className="mx-2 inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-500 bg-white hover:bg-blue-200 focus:outline-none border-blue-300 focus:shadow-outline-blue active:bg-blue-200 transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                                                                 <svg
@@ -69,10 +72,10 @@ export default async () => {
                                                     Удалить
                                                 </button> */}
                                                     <button
-                                                        onClick={() => {
+                                                        // onClick={() => {
 
-                                                            }
-                                                        }
+                                                        //     }
+                                                        // }
                                                         type="button"
                                                         className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-red-500 bg-white hover:bg-red-200 focus:outline-none border-red-300 focus:shadow-outline-red active:bg-red-200 transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                                                         <svg
@@ -90,9 +93,9 @@ export default async () => {
                                                         <input
                                                             type="checkbox"
                                                             className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 sm:left-6"
-                                                            ref={checkbox}
-                                                            checked={checked}
-                                                            onChange={toggleAll}
+                                                            // ref={checkbox}
+                                                            // checked={checked}
+                                                            // onChange={toggleAll}
                                                         />
                                                         </th>
                                                         <th scope="col" className="min-w-[4rem] py-3.5 pr-3 text-left text-sm font-semibold text-gray-900">
@@ -111,29 +114,29 @@ export default async () => {
                                                 </thead>
                                                 <tbody className="divide-y divide-gray-200 bg-white">
                                                 {data.rubric.map((item, i) => (
-                                                    <tr key={item.id} className={selectedRubric.includes(item) ? 'bg-gray-50' : undefined}>
+                                                    <tr key={item.id} className={data.rubric.includes(item) ? 'bg-gray-50' : undefined}>
                                                         <td className="relative w-12 px-6 sm:w-16 sm:px-8">
-                                                            {selectedRubric.includes(item) && (
+                                                            {data.rubric.includes(item) && (
                                                             <div className="absolute inset-y-0 left-0 w-0.5 bg-indigo-600" />
                                                             )}
                                                             <input
                                                             type="checkbox"
                                                             className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 sm:left-6"
                                                             value={item.email}
-                                                            checked={selectedRubric.includes(item)}
-                                                            onChange={(e) =>
-                                                                setSelectedRubric(
-                                                                e.target.checked
-                                                                    ? [...selectedRubric, item]
-                                                                    : selectedRubric.filter((p) => p !== item)
-                                                                )
-                                                            }
+                                                            // checked={selectedRubric.includes(item)}
+                                                            // onChange={(e) =>
+                                                            //     setSelectedRubric(
+                                                            //     e.target.checked
+                                                            //         ? [...selectedRubric, item]
+                                                            //         : selectedRubric.filter((p) => p !== item)
+                                                            //     )
+                                                            // }
                                                             />
                                                         </td>
                                                     <td
                                                         className={classNames(
                                                         'whitespace-nowrap py-4 pr-3 text-sm font-medium',
-                                                        selectedRubric.includes(item) ? 'text-indigo-600' : 'text-gray-900'
+                                                        data.rubric.includes(item) ? 'text-indigo-600' : 'text-gray-900'
                                                         )}
                                                     >
                                                         {i+1}
@@ -141,20 +144,20 @@ export default async () => {
                                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{item.value}</td>
                                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
 
-                                                    <Switch is_active={item.is_active}/>
+                                                    {/* <Switch is_active={item.is_active}/> */}
 
                                                     </td>
                                                         <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
 
                                                             <button
-                                                                onClick={() => {
-                                                                    is_visible_read_rubric(true)
-                                                                    current_value_rubric(item.value)
-                                                                    current_parent_value_rubric(item.parent.value)
-                                                                    current_created_rubric(item.created_at)
-                                                                    current_updated_rubric(item.updated_at)
-                                                                    }
-                                                                }
+                                                                // onClick={() => {
+                                                                //     is_visible_read_rubric(true)
+                                                                //     current_value_rubric(item.value)
+                                                                //     current_parent_value_rubric(item.parent.value)
+                                                                //     current_created_rubric(item.created_at)
+                                                                //     current_updated_rubric(item.updated_at)
+                                                                //     }
+                                                                // }
                                                                 type="button" className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-purple-500 bg-purple-50 hover:bg-purple-200 focus:outline-none focus:border-purple-300 focus:shadow-outline-purple active:bg-purple-200 transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                                                                 <svg
                                                                     className=" h-4 w-4  duration-150"
@@ -164,14 +167,14 @@ export default async () => {
                                                                 </svg>
                                                             </button>
                                                             <button
-                                                                onClick={() => {
-                                                                    is_visible_update_rubric(true)
-                                                                    current_id_rubric(item.id)
-                                                                    current_value_rubric(item.value)
-                                                                    current_parent_value_rubric(item.parent.value)
-                                                                    current_parent_id_rubric(item.parent.id)
-                                                                    }
-                                                                }
+                                                                // onClick={() => {
+                                                                //     is_visible_update_rubric(true)
+                                                                //     current_id_rubric(item.id)
+                                                                //     current_value_rubric(item.value)
+                                                                //     current_parent_value_rubric(item.parent.value)
+                                                                //     current_parent_id_rubric(item.parent.id)
+                                                                //     }
+                                                                // }
                                                                 type="button"
                                                                 className="mx-2 inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-500 bg-blue-50 hover:bg-blue-200 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-blue-200 transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                                                                 <svg
@@ -181,12 +184,12 @@ export default async () => {
                                                                 </svg>
                                                             </button>
                                                             <button
-                                                                onClick={() => {
-                                                                    is_visible_delete_rubric(true)
-                                                                    current_value_rubric(item.value)
-                                                                    current_id_rubric(item.id)
-                                                                    }
-                                                                }
+                                                                // onClick={() => {
+                                                                //     is_visible_delete_rubric(true)
+                                                                //     current_value_rubric(item.value)
+                                                                //     current_id_rubric(item.id)
+                                                                //     }
+                                                                // }
                                                                 type="button"
                                                                 className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-red-500 bg-red-50 hover:bg-red-200 focus:outline-none focus:border-red-300 focus:shadow-outline-red active:bg-red-200 transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                                                                 <svg
