@@ -1,4 +1,5 @@
 import Toggle from "./Toggle"
+import ModalRead from "./Modal/Read"
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -6,7 +7,9 @@ function classNames(...classes) {
 
 export default ({ data }) => {
     return (
-        <div className="mt-4 p-4 sm:p-6 lg:p-8">
+        <>
+<ModalRead/>
+                <div className="mt-4 p-4 sm:p-6 lg:p-8">
             <div className="sm:flex sm:items-center">
                 <div className="sm:flex-auto">
                     <h1 className="text-xl font-semibold text-gray-900">
@@ -262,5 +265,7 @@ export default ({ data }) => {
                 </div>
             </div>
         </div>
+
+        </>
     )
 }
