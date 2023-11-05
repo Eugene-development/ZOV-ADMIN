@@ -4,9 +4,14 @@ import { getRubrics } from "./server"
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
+
+// import { revalidatePath } from 'next/cache'
+
 export default async () => {
 
     const data = await getRubrics()
+    // revalidatePath('/rubrics')
+
   return (
     <>
       {/* {data.rubric.map((feature) => (
@@ -43,7 +48,7 @@ export default async () => {
                                     <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                     <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                                         <div className="relative overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                                            {data.rubric.length > 0 && (
+                                            {data.rubric?.length > 0 && (
                                                 <div className="absolute top-0 left-12 flex h-12 items-center space-x-3 bg-gray-50 sm:left-16">
                                                 {/* <button
                                                     type="button"

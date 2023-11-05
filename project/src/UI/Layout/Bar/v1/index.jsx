@@ -132,6 +132,7 @@ export default function Example() {
                                                                         }
                                                                     >
                                                                         {!item.children ? (
+                                                                            <div onClick={() => closeVisibleBar()}>
                                                                             <Link rel="prefetch"
                                                                                 href={
                                                                                     item.href
@@ -151,6 +152,7 @@ export default function Example() {
                                                                                     item.name
                                                                                 }
                                                                             </Link>
+                                                                            </div>
                                                                         ) : (
                                                                             <Disclosure as="div">
                                                                                 {({
@@ -188,7 +190,7 @@ export default function Example() {
                                                                                         >
                                                                                             {item.children.map(
                                                                                                 subItem => (
-                                                                                                    <li className='hover:bg-gray-50'
+                                                                                                    <li onClick={() => closeVisibleBar()} className='hover:bg-gray-50'
                                                                                                         key={
                                                                                                             subItem.name
                                                                                                         }

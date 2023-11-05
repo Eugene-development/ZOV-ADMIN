@@ -13,7 +13,6 @@ import { useAuth } from '@/hooks/auth'
 export default function RootLayout({ children }) {
     //  const { user } = useAuth({ middleware: 'auth' })
     const { user } = useAuth({ middleware: 'guest' })
-console.log(user)
     return (
         <html lang="en">
             <body>
