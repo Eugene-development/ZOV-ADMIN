@@ -1,12 +1,14 @@
-import { Rubric } from '@/UI'
-import { getRubrics } from './server'
+import { Rubric } from "@/UI";
+import { getRubrics } from "./server"
 
 export default async () => {
-    const data = await getRubrics()
 
-    return (
-        <>
-            <Rubric data={data} />
-        </>
-    )
-}
+  const data = await getRubrics()
+
+  return (
+    <>
+        <Rubric data={data}/>
+    </>
+  );
+};
+
