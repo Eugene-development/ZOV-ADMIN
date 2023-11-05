@@ -16,20 +16,23 @@ export default function Home() {
                     {user ? (
                         <Link
                             href="/dashboard"
-                            className="ml-4 text-sm text-gray-50">
+                            className="ml-4 text-sm text-gray-50"
+                        >
                             Дашборд
                         </Link>
                     ) : (
                         <>
                             <Link
                                 href="/login"
-                                className="text-sm text-gray-50 ">
+                                className="text-sm text-gray-50 "
+                            >
                                 Вход
                             </Link>
 
                             <Link
                                 href="/register"
-                                className="ml-4 text-sm text-gray-50 ">
+                                className="ml-4 text-sm text-gray-50 "
+                            >
                                 Регистрация
                             </Link>
                         </>
@@ -56,7 +59,8 @@ export default function Home() {
                                         strokeLinejoin="round"
                                         strokeWidth="2"
                                         viewBox="0 0 24 24"
-                                        className="w-8 h-8 text-gray-500">
+                                        className="w-8 h-8 text-gray-500"
+                                    >
                                         <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                                     </svg>
 
@@ -89,7 +93,8 @@ export default function Home() {
                                         strokeLinejoin="round"
                                         strokeWidth="2"
                                         viewBox="0 0 24 24"
-                                        className="w-8 h-8 text-gray-500">
+                                        className="w-8 h-8 text-gray-500"
+                                    >
                                         <path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                                         <path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                                     </svg>
@@ -121,7 +126,8 @@ export default function Home() {
                                         strokeLinejoin="round"
                                         strokeWidth="2"
                                         viewBox="0 0 24 24"
-                                        className="w-8 h-8 text-gray-500">
+                                        className="w-8 h-8 text-gray-500"
+                                    >
                                         <path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
                                     </svg>
 
@@ -152,7 +158,8 @@ export default function Home() {
                                         strokeLinejoin="round"
                                         strokeWidth="2"
                                         viewBox="0 0 24 24"
-                                        className="w-8 h-8 text-gray-500">
+                                        className="w-8 h-8 text-gray-500"
+                                    >
                                         <path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
 
@@ -167,25 +174,29 @@ export default function Home() {
                                         tools and libraries, such as{' '}
                                         <a
                                             href="https://forge.laravel.com"
-                                            className="">
+                                            className=""
+                                        >
                                             Forge
                                         </a>
                                         ,{' '}
                                         <a
                                             href="https://vapor.laravel.com"
-                                            className="">
+                                            className=""
+                                        >
                                             Vapor
                                         </a>
                                         ,{' '}
                                         <a
                                             href="https://nova.laravel.com"
-                                            className="">
+                                            className=""
+                                        >
                                             Nova
                                         </a>
                                         , and{' '}
                                         <a
                                             href="https://envoyer.io"
-                                            className="">
+                                            className=""
+                                        >
                                             Envoyer
                                         </a>{' '}
                                         help you take your projects to the next
@@ -193,37 +204,43 @@ export default function Home() {
                                         source libraries like{' '}
                                         <a
                                             href="https://laravel.com/docs/billing"
-                                            className="">
+                                            className=""
+                                        >
                                             Cashier
                                         </a>
                                         ,{' '}
                                         <a
                                             href="https://laravel.com/docs/dusk"
-                                            className="">
+                                            className=""
+                                        >
                                             Dusk
                                         </a>
                                         ,{' '}
                                         <a
                                             href="https://laravel.com/docs/broadcasting"
-                                            className="">
+                                            className=""
+                                        >
                                             Echo
                                         </a>
                                         ,{' '}
                                         <a
                                             href="https://laravel.com/docs/horizon"
-                                            className="">
+                                            className=""
+                                        >
                                             Horizon
                                         </a>
                                         ,{' '}
                                         <a
                                             href="https://laravel.com/docs/sanctum"
-                                            className="">
+                                            className=""
+                                        >
                                             Sanctum
                                         </a>
                                         ,{' '}
                                         <a
                                             href="https://laravel.com/docs/telescope"
-                                            className="">
+                                            className=""
+                                        >
                                             Telescope
                                         </a>
                                         , and more.
@@ -243,7 +260,8 @@ export default function Home() {
                                     strokeWidth="2"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
-                                    className="-mt-px w-5 h-5 text-gray-100">
+                                    className="-mt-px w-5 h-5 text-gray-100"
+                                >
                                     <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
 
@@ -258,7 +276,8 @@ export default function Home() {
                                     strokeLinejoin="round"
                                     strokeWidth="2"
                                     viewBox="0 0 24 24"
-                                    className="ml-4 -mt-px w-5 h-5 text-gray-100">
+                                    className="ml-4 -mt-px w-5 h-5 text-gray-100"
+                                >
                                     <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                 </svg>
 

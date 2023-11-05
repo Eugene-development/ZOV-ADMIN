@@ -1,10 +1,14 @@
-
-import { getCategory, createCategory, updateCategory, deleteCategory } from './server'
+import {
+    getCategory,
+    createCategory,
+    updateCategory,
+    deleteCategory,
+} from './server'
 import { usePathname, useSearchParams } from 'next/navigation'
 
-const Dashboard = async (request) => {
+const Dashboard = async request => {
     // const client = getClient()
-// const pathname = usePathname()
+    // const pathname = usePathname()
     // const data = await getCategory()
     const data = await createCategory()
     // const path = request.nextUrl.searchParams.get('path')

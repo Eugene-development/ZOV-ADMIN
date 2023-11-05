@@ -24,7 +24,7 @@ const RUBRICS = gql`
 `
 
 export async function getRubrics() {
-    const revalidate = 1
+    // const revalidate = 1
 
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {

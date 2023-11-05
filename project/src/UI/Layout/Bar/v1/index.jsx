@@ -132,26 +132,31 @@ export default function Example() {
                                                                         }
                                                                     >
                                                                         {!item.children ? (
-                                                                            <div onClick={() => closeVisibleBar()}>
-                                                                            <Link rel="prefetch"
-                                                                                href={
-                                                                                    item.href
+                                                                            <div
+                                                                                onClick={() =>
+                                                                                    closeVisibleBar()
                                                                                 }
-                                                                                className={classNames(
-                                                                                    item.current
-                                                                                        ? 'bg-gray-50'
-                                                                                        : 'hover:bg-gray-50',
-                                                                                    'group flex gap-x-3 rounded-md p-2 text-base leading-6 font-semibold text-gray-700',
-                                                                                )}
                                                                             >
-                                                                                <item.icon
-                                                                                    className="h-6 w-6 shrink-0 text-gray-400"
-                                                                                    aria-hidden="true"
-                                                                                />
-                                                                                {
-                                                                                    item.name
-                                                                                }
-                                                                            </Link>
+                                                                                <Link
+                                                                                    rel="prefetch"
+                                                                                    href={
+                                                                                        item.href
+                                                                                    }
+                                                                                    className={classNames(
+                                                                                        item.current
+                                                                                            ? 'bg-gray-50'
+                                                                                            : 'hover:bg-gray-50',
+                                                                                        'group flex gap-x-3 rounded-md p-2 text-base leading-6 font-semibold text-gray-700',
+                                                                                    )}
+                                                                                >
+                                                                                    <item.icon
+                                                                                        className="h-6 w-6 shrink-0 text-gray-400"
+                                                                                        aria-hidden="true"
+                                                                                    />
+                                                                                    {
+                                                                                        item.name
+                                                                                    }
+                                                                                </Link>
                                                                             </div>
                                                                         ) : (
                                                                             <Disclosure as="div">
@@ -190,13 +195,21 @@ export default function Example() {
                                                                                         >
                                                                                             {item.children.map(
                                                                                                 subItem => (
-                                                                                                    <li onClick={() => closeVisibleBar()} className='hover:bg-gray-50'
+                                                                                                    <li
+                                                                                                        onClick={() =>
+                                                                                                            closeVisibleBar()
+                                                                                                        }
+                                                                                                        className="hover:bg-gray-50"
                                                                                                         key={
                                                                                                             subItem.name
                                                                                                         }
                                                                                                     >
                                                                                                         {/* 44px */}
-                                                                                                       <Link  href={ subItem.href }>
+                                                                                                        <Link
+                                                                                                            href={
+                                                                                                                subItem.href
+                                                                                                            }
+                                                                                                        >
                                                                                                             <Disclosure.Button
                                                                                                                 className={classNames(
                                                                                                                     subItem.current

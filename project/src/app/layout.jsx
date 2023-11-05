@@ -1,4 +1,4 @@
-"use client"
+'use client'
 // import { useAuth } from '@/hooks/auth'
 import '../css/globals.css'
 // import "../css/globals.css";
@@ -17,14 +17,13 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <body>
                 {!user && <p>У вас нет прав доступа</p>}
-                { user && user.is_active === 1 &&
-                <>
-                <Header />
-                <Bar />
-                {children}
-                 </>
-                }
-
+                {user && user.is_active === 1 && (
+                    <>
+                        <Header />
+                        <Bar />
+                        {children}
+                    </>
+                )}
             </body>
         </html>
     )
