@@ -22,24 +22,24 @@ import { useAuth } from '@/hooks/auth'
 import { useBarStore } from '@/store/bar'
 const { visibleBar } = useBarStore
 
-const navigation = [
-    { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-    { name: 'Team', href: '#', icon: UsersIcon, current: false },
-    { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-    { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-    {
-        name: 'Documents',
-        href: '#',
-        icon: DocumentDuplicateIcon,
-        current: false,
-    },
-    { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
-]
-const teams = [
-    { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
-    { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-    { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
-]
+// const navigation = [
+//     { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
+//     { name: 'Team', href: '#', icon: UsersIcon, current: false },
+//     { name: 'Projects', href: '#', icon: FolderIcon, current: false },
+//     { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
+//     {
+//         name: 'Documents',
+//         href: '#',
+//         icon: DocumentDuplicateIcon,
+//         current: false,
+//     },
+//     { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
+// ]
+// const teams = [
+//     { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
+//     { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
+//     { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
+// ]
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
@@ -52,10 +52,9 @@ export default function Example() {
 
     return (
         <>
-            <div>
                 <div className="">
-                    <div className="sticky top-0 z-40 lg:mx-auto lg:max-w-full lg:px-8">
-                        <div className="flex h-16 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-0 lg:shadow-none">
+                    <div className="sticky top-0 z-40 lg:mx-auto lg:max-w-full ">
+                        <div className="flex lg:px-8 h-16 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6  lg:shadow-none">
                             {/* Separator */}
                             <button
                                 type="button"
@@ -191,7 +190,6 @@ export default function Example() {
                         </div>
                     </main>
                 </div>
-            </div>
         </>
     )
 }
