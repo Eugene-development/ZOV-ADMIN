@@ -6,9 +6,9 @@ import { CheckIcon } from '@heroicons/react/24/outline'
 import { useRubricStore } from "@/store/rubric"
 const { visibleRubricModal } = useRubricStore
 
-export default function index({data}) {
+export default function index() {
     const cancelButtonRef = useRef(null)
-    const {currentVisibleRubricModal, closeVisibleRubricModal} = visibleRubricModal()
+    const {currentVisibleRubricModal, closeVisibleRubricModal, currentRubric} = visibleRubricModal()
   return (
         <Transition.Root show={currentVisibleRubricModal} as={Fragment}>
             <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => closeVisibleRubricModal()}>
@@ -56,7 +56,7 @@ export default function index({data}) {
                             <div className="mt-6 grid grid-cols-1 gap-y-6 ">
                                 <div className="">
                                     <span className="block text-sm font-medium text-gray-700">
-                                        Значение -
+                                        Значение - {currentRubric.value}
                                         {/* "{currentValueRubric}" */}
                                     </span>
                                 </div>

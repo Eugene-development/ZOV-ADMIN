@@ -190,7 +190,7 @@ export default ({ data }) => {
                                             <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                                 <button
                                                     onClick={() => {
-                                                        openVisibleRubricModal()
+                                                        openVisibleRubricModal(item)
                                                         }
                                                     }
                                                     type="button"
