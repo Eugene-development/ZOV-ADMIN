@@ -1,3 +1,16 @@
 import { create } from 'zustand'
 
-export const useRubricStore = {}
+const visibleRubricModal = create(set => ({
+    currentVisibleRubricModal: false,
+    currentRubric: [],
+    openVisibleRubricModal: rubric => {
+        set(() => ({ currentRubric: rubric }))
+        set(() => ({ currentVisibleRubricModal: true }))
+    },
+    closeVisibleRubricModal: () =>
+        set(() => ({ currentVisibleRubricModal: false })),
+}))
+
+export const useRubricStore = {
+    visibleRubricModal,
+}

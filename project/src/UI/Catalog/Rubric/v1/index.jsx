@@ -1,11 +1,18 @@
+"use client"
 import Toggle from "./Toggle"
 import ModalRead from "./Modal/Read"
+
+import { useRubricStore } from "@/store/rubric"
+const { visibleRubricModal } = useRubricStore
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 export default ({ data }) => {
+    const { openVisibleRubricModal } = visibleRubricModal()
+
+
     return (
         <>
 <ModalRead/>
@@ -182,14 +189,10 @@ export default ({ data }) => {
                                             </td>
                                             <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                                 <button
-                                                    // onClick={() => {
-                                                    //     is_visible_read_rubric(true)
-                                                    //     current_value_rubric(item.value)
-                                                    //     current_parent_value_rubric(item.parent.value)
-                                                    //     current_created_rubric(item.created_at)
-                                                    //     current_updated_rubric(item.updated_at)
-                                                    //     }
-                                                    // }
+                                                    onClick={() => {
+                                                        openVisibleRubricModal()
+                                                        }
+                                                    }
                                                     type="button"
                                                     className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-purple-500 bg-purple-50 hover:bg-purple-200 focus:outline-none focus:border-purple-300 focus:shadow-outline-purple active:bg-purple-200 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                 >
