@@ -58,7 +58,7 @@ const DeleteItemRubric = () => {
                         </Dialog.Title>
                         <div className="mt-2">
                         <p className="text-sm text-gray-500">
-                            Категория "<strong>xxx</strong>" будет удалёна из базы данных. Если вы не уверены просто поменяйте переключателем статус элемента в таблице.
+                            Категория "<strong>{currentDeleteCategory.value}</strong>" будет удалёна из базы данных. Если вы не уверены просто поменяйте переключателем статус элемента в таблице.
                         </p>
                         </div>
                     </div>
