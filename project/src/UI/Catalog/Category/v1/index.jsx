@@ -1,21 +1,23 @@
 "use client"
 import Toggle from "./Toggle"
 import ModalRead from "./Modal/Read"
+import ModalDelete from "./Modal/Delete"
 
 import { useCategoryStore } from "@/store/category"
-const { visibleCategoryModal } = useCategoryStore
+const { visibleReadCategoryModal } = useCategoryStore
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 export default ({ data }) => {
-    const { openVisibleCategoryModal } = visibleCategoryModal()
+    const { openVisibleReadCategoryModal } = visibleReadCategoryModal()
 
 
     return (
         <>
 <ModalRead/>
+<ModalDelete/>
                 <div className="mt-4 p-4 sm:p-6 lg:p-8">
             <div className="sm:flex sm:items-center">
                 <div className="sm:flex-auto">
@@ -190,7 +192,7 @@ export default ({ data }) => {
                                             <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                                 <button
                                                     onClick={() => {
-                                                        openVisibleCategoryModal(item)
+                                                        openVisibleReadCategoryModal(item)
                                                         }
                                                     }
                                                     type="button"

@@ -4,14 +4,14 @@ import { Dialog, Transition } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/24/outline'
 
 import { useCategoryStore } from "@/store/category"
-const { visibleCategoryModal } = useCategoryStore
+const { visibleReadCategoryModal } = useCategoryStore
 
 export default function index() {
     const cancelButtonRef = useRef(null)
-    const {currentVisibleCategoryModal, closeVisibleCategoryModal, currentCategory} = visibleCategoryModal()
+    const {currentVisibleReadCategoryModal, closeVisibleReadCategoryModal, currentReadCategory} = visibleReadCategoryModal()
   return (
-        <Transition.Root show={currentVisibleCategoryModal} as={Fragment}>
-            <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => closeVisibleCategoryModal()}>
+        <Transition.Root show={currentVisibleReadCategoryModal} as={Fragment}>
+            <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => closeVisibleReadCategoryModal()}>
                 <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -56,7 +56,7 @@ export default function index() {
                             <div className="mt-6 grid grid-cols-1 gap-y-6 ">
                                 <div className="">
                                     <span className="block text-sm font-medium text-gray-700">
-                                        Значение - {currentCategory.value}
+                                        Значение - {currentReadCategory.value}
                                         {/* "{currentValueCategory}" */}
                                     </span>
                                 </div>
@@ -85,7 +85,7 @@ export default function index() {
                                 <button
                                     type="button"
                                     className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"
-                                    onClick={() => closeVisibleCategoryModal()}
+                                    onClick={() => closeVisibleReadCategoryModal()}
                                     // ref={cancelButtonRef}
                                     >
                                     Закрыть

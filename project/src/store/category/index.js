@@ -1,16 +1,16 @@
 import { create } from 'zustand'
 
-const visibleCategoryModal = create(set => ({
-    currentVisibleCategoryModal: false,
-    currentCategory: [],
-    openVisibleCategoryModal: category => {
-        set(() => ({ currentCategory: category }))
-        set(() => ({ currentVisibleCategoryModal: true }))
+const visibleReadCategoryModal = create(set => ({
+    currentVisibleReadCategoryModal: false,
+    currentReadCategory: [],
+    openVisibleReadCategoryModal: category => {
+        set(() => ({ currentReadCategory: category }))
+        set(() => ({ currentVisibleReadCategoryModal: true }))
     },
-    closeVisibleCategoryModal: () =>
-        set(() => ({ currentVisibleCategoryModal: false })),
+    closeVisibleReadCategoryModal: () =>
+        set(() => ({ currentVisibleReadCategoryModal: false })),
 }))
 
 export const useCategoryStore = {
-    visibleCategoryModal,
+    visibleReadCategoryModal,
 }
