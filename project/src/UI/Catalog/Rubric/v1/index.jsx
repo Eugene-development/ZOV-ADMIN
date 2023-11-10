@@ -2,8 +2,8 @@
 import Toggle from "./Toggle"
 import ModalRead from "./Modal/Read"
 
-import { useReadRubricStore } from "@/store/rubric"
-const { visibleReadRubricModal } = useReadRubricStore
+import { useRubricStore } from "@/store/rubric"
+const { visibleReadRubricModal } = useRubricStore
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')

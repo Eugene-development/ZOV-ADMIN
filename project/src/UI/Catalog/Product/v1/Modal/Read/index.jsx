@@ -4,14 +4,14 @@ import { Dialog, Transition } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/24/outline'
 
 import { useProductStore } from "@/store/product"
-const { visibleProductModal } = useProductStore
+const { visibleReadProductModal } = useProductStore
 
 export default function index() {
     const cancelButtonRef = useRef(null)
-    const {currentVisibleProductModal, closeVisibleProductModal, currentProduct} = visibleProductModal()
+    const {currentVisibleReadProductModal, closeVisibleReadProductModal, currentReadProduct} = visibleReadProductModal()
   return (
-        <Transition.Root show={currentVisibleProductModal} as={Fragment}>
-            <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => closeVisibleProductModal()}>
+        <Transition.Root show={currentVisibleReadProductModal} as={Fragment}>
+            <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => closeVisibleReadProductModal()}>
                 <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -56,26 +56,26 @@ export default function index() {
                             <div className="mt-6 grid grid-cols-1 gap-y-6 ">
                                 <div className="">
                                     <span className="block text-sm font-medium text-gray-700">
-                                        Значение - {currentProduct.value}
-                                        {/* "{currentValueProduct}" */}
+                                        Значение - {currentReadProduct.value}
+                                        {/* "{currentValueReadProduct}" */}
                                     </span>
                                 </div>
 
                                 <div className="">
                                     <span  className="block text-sm font-medium text-gray-700">
                                         Принадлежит элементу меню -
-                                        {/* "{currentParentValueProduct}" */}
+                                        {/* "{currentParentValueReadProduct}" */}
                                     </span>
                                 </div>
 
                                 <div className="">
                                     <span className="block text-sm font-medium text-gray-700">
-                                        {/* Запись создана - {currentCreatedProduct ? new Date(currentCreatedProduct).toLocaleDateString("ru") : "Не указано"} */}
+                                        {/* Запись создана - {currentCreatedReadProduct ? new Date(currentCreatedReadProduct).toLocaleDateString("ru") : "Не указано"} */}
                                     </span>
                                 </div>
                                 <div className="">
                                     <span className="block text-sm font-medium text-gray-700">
-                                        {/* Последнее изменение - {currentCreatedProduct ? new Date(currentUpdatedProduct).toLocaleDateString("ru") : "Не указано"} */}
+                                        {/* Последнее изменение - {currentCreatedReadProduct ? new Date(currentUpdatedReadProduct).toLocaleDateString("ru") : "Не указано"} */}
                                     </span>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@ export default function index() {
                                 <button
                                     type="button"
                                     className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"
-                                    onClick={() => closeVisibleProductModal()}
+                                    onClick={() => closeVisibleReadProductModal()}
                                     // ref={cancelButtonRef}
                                     >
                                     Закрыть

@@ -11,6 +11,6 @@ const visibleReadRubricModal = create(set => ({
         set(() => ({ currentVisibleReadRubricModal: false })),
 }))
 
-export const useReadRubricStore = {
+export const useRubricStore = {
     visibleReadRubricModal,
 }

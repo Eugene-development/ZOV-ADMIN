@@ -3,14 +3,14 @@ import Toggle from "./Toggle"
 import ModalRead from "./Modal/Read"
 
 import { useProductStore } from "@/store/product"
-const { visibleProductModal } = useProductStore
+const { visibleReadProductModal } = useProductStore
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 export default ({ data }) => {
-    const { openVisibleProductModal } = visibleProductModal()
+    const { openVisibleReadProductModal } = visibleReadProductModal()
 
 
     return (
@@ -190,7 +190,7 @@ export default ({ data }) => {
                                             <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                                 <button
                                                     onClick={() => {
-                                                        openVisibleProductModal(item)
+                                                        openVisibleReadProductModal(item)
                                                         }
                                                     }
                                                     type="button"

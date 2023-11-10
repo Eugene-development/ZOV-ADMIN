@@ -3,8 +3,8 @@ import { Fragment, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/24/outline'
 
-import { useReadRubricStore } from "@/store/rubric"
-const { visibleReadRubricModal } = useReadRubricStore
+import { useRubricStore } from "@/store/rubric"
+const { visibleReadRubricModal } = useRubricStore
 
 export default function index() {
     const cancelButtonRef = useRef(null)
