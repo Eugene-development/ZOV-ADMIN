@@ -4,7 +4,7 @@ import ModalRead from "./Modal/Read"
 import ModalDelete from "./Modal/Delete"
 
 import { useCategoryStore } from "@/store/category"
-const { visibleReadCategoryModal } = useCategoryStore
+const { visibleReadCategoryModal, visibleDeleteCategoryModal } = useCategoryStore
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -12,6 +12,7 @@ function classNames(...classes) {
 
 export default ({ data }) => {
     const { openVisibleReadCategoryModal } = visibleReadCategoryModal()
+    const { openVisibleDeleteCategoryModal } = visibleDeleteCategoryModal()
 
 
     return (
@@ -238,12 +239,10 @@ export default ({ data }) => {
                                                     </svg>
                                                 </button>
                                                 <button
-                                                    // onClick={() => {
-                                                    //     is_visible_delete_rubric(true)
-                                                    //     current_value_rubric(item.value)
-                                                    //     current_id_rubric(item.id)
-                                                    //     }
-                                                    // }
+                                                    onClick={() => {
+                                                        openVisibleDeleteCategoryModal(item)
+                                                        }
+                                                    }
                                                     type="button"
                                                     className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-red-500 bg-red-50 hover:bg-red-200 focus:outline-none focus:border-red-300 focus:shadow-outline-red active:bg-red-200 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                 >

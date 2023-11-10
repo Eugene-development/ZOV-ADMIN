@@ -3,8 +3,13 @@ import { useRef, Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
+import { useCategoryStore } from "@/store/category"
+const { visibleDeleteCategoryModal } = useCategoryStore
 
 const DeleteItemRubric = () => {
+
+        const {currentVisibleDeleteCategoryModal, closeVisibleDeleteCategoryModal, currentDeleteCategory} = visibleDeleteCategoryModal()
+
 
     // const [removeRubric, {error: removeError}] = useMutation(DELETE_RUBRIC, {
     //         refetchQueries: [
@@ -17,8 +22,8 @@ const DeleteItemRubric = () => {
     // const cancelButtonRef = useRef(null)
 
     return (
-        <Transition.Root show={false} as={Fragment}>
-        <Dialog as="div" className="relative z-10"  onClose={() => false}>
+        <Transition.Root show={currentVisibleDeleteCategoryModal} as={Fragment}>
+        <Dialog as="div" className="relative z-10"  onClose={() => closeVisibleDeleteCategoryModal()}>
             <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -72,7 +77,7 @@ const DeleteItemRubric = () => {
                     <button
                         type="button"
                         className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"
-                        // onClick={() => is_visible_delete_rubric(false)}
+                        onClick={() => closeVisibleDeleteCategoryModal()}
                         // ref={cancelButtonRef}
                     >
                         Отменить
