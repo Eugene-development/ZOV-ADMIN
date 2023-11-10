@@ -3,15 +3,15 @@ import { Fragment, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/24/outline'
 
-import { useRubricStore } from "@/store/rubric"
-const { visibleRubricModal } = useRubricStore
+import { useCategoryStore } from "@/store/category"
+const { visibleCategoryModal } = useCategoryStore
 
 export default function index() {
     const cancelButtonRef = useRef(null)
-    const {currentVisibleRubricModal, closeVisibleRubricModal, currentRubric} = visibleRubricModal()
+    const {currentVisibleCategoryModal, closeVisibleCategoryModal, currentCategory} = visibleCategoryModal()
   return (
-        <Transition.Root show={currentVisibleRubricModal} as={Fragment}>
-            <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => closeVisibleRubricModal()}>
+        <Transition.Root show={currentVisibleCategoryModal} as={Fragment}>
+            <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => closeVisibleCategoryModal()}>
                 <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -42,7 +42,7 @@ export default function index() {
                         </div>
                         <div className="mt-3 text-center sm:mt-5">
                             <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
-                            Данные элемента рубрики
+                            Категория
                             </Dialog.Title>
                             <div className="mt-2">
                             <p className="text-sm text-gray-500">
@@ -56,26 +56,26 @@ export default function index() {
                             <div className="mt-6 grid grid-cols-1 gap-y-6 ">
                                 <div className="">
                                     <span className="block text-sm font-medium text-gray-700">
-                                        Значение - {currentRubric.value}
-                                        {/* "{currentValueRubric}" */}
+                                        Значение - {currentCategory.value}
+                                        {/* "{currentValueCategory}" */}
                                     </span>
                                 </div>
 
                                 <div className="">
                                     <span  className="block text-sm font-medium text-gray-700">
                                         Принадлежит элементу меню -
-                                        {/* "{currentParentValueRubric}" */}
+                                        {/* "{currentParentValueCategory}" */}
                                     </span>
                                 </div>
 
                                 <div className="">
                                     <span className="block text-sm font-medium text-gray-700">
-                                        {/* Запись создана - {currentCreatedRubric ? new Date(currentCreatedRubric).toLocaleDateString("ru") : "Не указано"} */}
+                                        {/* Запись создана - {currentCreatedCategory ? new Date(currentCreatedCategory).toLocaleDateString("ru") : "Не указано"} */}
                                     </span>
                                 </div>
                                 <div className="">
                                     <span className="block text-sm font-medium text-gray-700">
-                                        {/* Последнее изменение - {currentCreatedRubric ? new Date(currentUpdatedRubric).toLocaleDateString("ru") : "Не указано"} */}
+                                        {/* Последнее изменение - {currentCreatedCategory ? new Date(currentUpdatedCategory).toLocaleDateString("ru") : "Не указано"} */}
                                     </span>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@ export default function index() {
                                 <button
                                     type="button"
                                     className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"
-                                    onClick={() => closeVisibleRubricModal()}
+                                    onClick={() => closeVisibleCategoryModal()}
                                     // ref={cancelButtonRef}
                                     >
                                     Закрыть

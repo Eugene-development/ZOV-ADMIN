@@ -20,7 +20,7 @@ export default ({ data }) => {
             <div className="sm:flex sm:items-center">
                 <div className="sm:flex-auto">
                     <h1 className="text-xl font-semibold text-gray-900">
-                        Раздел "Рубрика"
+                        Раздел "Категория"
                     </h1>
                     <p className="mt-2 text-sm text-gray-700">
                         При изменении статуса элемента в неактивное положение,
