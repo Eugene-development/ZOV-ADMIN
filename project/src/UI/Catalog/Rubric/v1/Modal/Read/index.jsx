@@ -3,15 +3,15 @@ import { Fragment, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/24/outline'
 
-import { useRubricStore } from "@/store/rubric"
-const { visibleRubricModal } = useRubricStore
+import { useReadRubricStore } from "@/store/rubric"
+const { visibleReadRubricModal } = useReadRubricStore
 
 export default function index() {
     const cancelButtonRef = useRef(null)
-    const {currentVisibleRubricModal, closeVisibleRubricModal, currentRubric} = visibleRubricModal()
+    const {currentVisibleReadRubricModal, closeVisibleReadRubricModal, currentReadRubric} = visibleReadRubricModal()
   return (
-        <Transition.Root show={currentVisibleRubricModal} as={Fragment}>
-            <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => closeVisibleRubricModal()}>
+        <Transition.Root show={currentVisibleReadRubricModal} as={Fragment}>
+            <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => closeVisibleReadRubricModal()}>
                 <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -56,26 +56,26 @@ export default function index() {
                             <div className="mt-6 grid grid-cols-1 gap-y-6 ">
                                 <div className="">
                                     <span className="block text-sm font-medium text-gray-700">
-                                        Значение - {currentRubric.value}
-                                        {/* "{currentValueRubric}" */}
+                                        Значение - {currentReadRubric.value}
+                                        {/* "{currentValueReadRubric}" */}
                                     </span>
                                 </div>
 
                                 <div className="">
                                     <span  className="block text-sm font-medium text-gray-700">
                                         Принадлежит элементу меню -
-                                        {/* "{currentParentValueRubric}" */}
+                                        {/* "{currentParentValueReadRubric}" */}
                                     </span>
                                 </div>
 
                                 <div className="">
                                     <span className="block text-sm font-medium text-gray-700">
-                                        {/* Запись создана - {currentCreatedRubric ? new Date(currentCreatedRubric).toLocaleDateString("ru") : "Не указано"} */}
+                                        {/* Запись создана - {currentCreatedReadRubric ? new Date(currentCreatedReadRubric).toLocaleDateString("ru") : "Не указано"} */}
                                     </span>
                                 </div>
                                 <div className="">
                                     <span className="block text-sm font-medium text-gray-700">
-                                        {/* Последнее изменение - {currentCreatedRubric ? new Date(currentUpdatedRubric).toLocaleDateString("ru") : "Не указано"} */}
+                                        {/* Последнее изменение - {currentCreatedReadRubric ? new Date(currentUpdatedReadRubric).toLocaleDateString("ru") : "Не указано"} */}
                                     </span>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@ export default function index() {
                                 <button
                                     type="button"
                                     className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"
-                                    onClick={() => closeVisibleRubricModal()}
+                                    onClick={() => closeVisibleReadRubricModal()}
                                     // ref={cancelButtonRef}
                                     >
                                     Закрыть

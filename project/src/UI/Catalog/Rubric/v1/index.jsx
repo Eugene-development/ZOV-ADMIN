@@ -2,15 +2,15 @@
 import Toggle from "./Toggle"
 import ModalRead from "./Modal/Read"
 
-import { useRubricStore } from "@/store/rubric"
-const { visibleRubricModal } = useRubricStore
+import { useReadRubricStore } from "@/store/rubric"
+const { visibleReadRubricModal } = useReadRubricStore
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 export default ({ data }) => {
-    const { openVisibleRubricModal } = visibleRubricModal()
+    const { openVisibleReadRubricModal } = visibleReadRubricModal()
 
 
     return (
@@ -160,12 +160,12 @@ export default ({ data }) => {
                                                     type="checkbox"
                                                     className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 sm:left-6"
                                                     value={item.email}
-                                                    // checked={selectedRubric.includes(item)}
+                                                    // checked={selectedReadRubric.includes(item)}
                                                     // onChange={(e) =>
-                                                    //     setSelectedRubric(
+                                                    //     setSelectedReadRubric(
                                                     //     e.target.checked
-                                                    //         ? [...selectedRubric, item]
-                                                    //         : selectedRubric.filter((p) => p !== item)
+                                                    //         ? [...selectedReadRubric, item]
+                                                    //         : selectedReadRubric.filter((p) => p !== item)
                                                     //     )
                                                     // }
                                                 />
@@ -190,7 +190,7 @@ export default ({ data }) => {
                                             <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                                 <button
                                                     onClick={() => {
-                                                        openVisibleRubricModal(item)
+                                                        openVisibleReadRubricModal(item)
                                                         }
                                                     }
                                                     type="button"
