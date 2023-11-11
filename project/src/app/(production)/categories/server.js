@@ -36,18 +36,14 @@ const DELETE_CATEGORY = gql`
 `
 
 export async function deleteCategory({ id }) {
-    // console.log(id)
-
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
         id,
     }
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
-        // 'Content-Type': 'application/json',
     }
+
     await request(url, DELETE_CATEGORY, variables, requestHeaders)
     revalidatePath('/categories')
-
-    return
 }
