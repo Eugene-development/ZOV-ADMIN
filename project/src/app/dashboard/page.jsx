@@ -10,11 +10,11 @@ const Dashboard = async request => {
     // const client = getClient()
     // const pathname = usePathname()
     // const data = await getCategory()
-    const data = await createCategory()
+    // const data = await createCategory()
     // const path = request.nextUrl.searchParams.get('path')
     // const data = await updateCategory()
     // const data = await deleteCategory()
-    console.log(data)
+    // console.log(data)
     // revalidatePath(pathname)
     return (
         <>

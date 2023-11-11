@@ -6,10 +6,15 @@ import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import { useCategoryStore } from "@/store/category"
 const { visibleDeleteCategoryModal } = useCategoryStore
 
-const DeleteItemRubric = () => {
+
+import {
+    deleteCategory,
+} from '@/app/(production)/categories/server'
+
+const DeleteItemRubric =  () => {
 
         const {currentVisibleDeleteCategoryModal, closeVisibleDeleteCategoryModal, currentDeleteCategory} = visibleDeleteCategoryModal()
-
+// const data = await deleteCategory()
 
     // const [removeRubric, {error: removeError}] = useMutation(DELETE_RUBRIC, {
     //         refetchQueries: [
@@ -67,10 +72,10 @@ const DeleteItemRubric = () => {
                     <button
                         type="button"
                         className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-                        // onClick={() => {
-                        //     removeRubric({variables: { id: currentIDRubric }}),
-                        //     is_visible_delete_rubric(false)
-                        // }}
+                        onClick={() => {
+                            deleteCategory(currentDeleteCategory.id)
+                            // closeVisibleDeleteCategoryModal()
+                        }}
                     >
                         Удалить
                     </button>
