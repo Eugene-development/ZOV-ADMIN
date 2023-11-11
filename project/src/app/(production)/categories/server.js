@@ -1,6 +1,6 @@
 'use server'
 import { gql, request } from 'graphql-request'
-
+import { revalidatePath } from 'next/cache'
 const CATEGORIES = gql`
     query category {
         category {
@@ -46,6 +46,8 @@ export async function deleteCategory({ id }) {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
         // 'Content-Type': 'application/json',
     }
+    await request(url, DELETE_CATEGORY, variables, requestHeaders)
+    revalidatePath('/categories')
 
-    return await request(url, DELETE_CATEGORY, variables, requestHeaders)
+    return
 }
