@@ -11,6 +11,15 @@ const visibleReadCategoryModal = create(set => ({
         set(() => ({ currentVisibleReadCategoryModal: false })),
 }))
 
+const visibleCreateCategoryModal = create(set => ({
+    currentVisibleCreateCategoryModal: false,
+    openVisibleCreateCategoryModal: () => {
+        set(() => ({ currentVisibleCreateCategoryModal: true }))
+    },
+    closeVisibleCreateCategoryModal: () =>
+        set(() => ({ currentVisibleCreateCategoryModal: false })),
+}))
+
 const visibleDeleteCategoryModal = create(set => ({
     currentVisibleDeleteCategoryModal: false,
     currentDeleteCategory: [],
@@ -20,11 +29,10 @@ const visibleDeleteCategoryModal = create(set => ({
     },
     closeVisibleDeleteCategoryModal: () =>
         set(() => ({ currentVisibleDeleteCategoryModal: false })),
-    // deleteCurrentCategory: () =>
-    //     set(() => ({ currentVisibleDeleteCategoryModal: false })),
 }))
 
 export const useCategoryStore = {
     visibleReadCategoryModal,
+    visibleCreateCategoryModal,
     visibleDeleteCategoryModal,
 }

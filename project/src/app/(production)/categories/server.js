@@ -1,6 +1,7 @@
 'use server'
 import { gql, request } from 'graphql-request'
 import { revalidatePath } from 'next/cache'
+
 const CATEGORIES = gql`
     query category {
         category {
@@ -25,6 +26,50 @@ export async function getCategory() {
     }
 
     return await request(url, CATEGORIES, variables, requestHeaders)
+}
+
+const CREATE_CATEGORY = gql`
+    mutation create_category(
+        $id: UUID!
+        $key: UUID!
+        $is_active: Boolean
+        $value: String!
+        $slug: String!
+        $parentableType: String
+        $parentableId: UUID!
+    ) {
+        createCategory(
+            input: {
+                id: $id
+                key: $key
+                is_active: $is_active
+                value: $value
+                slug: $slug
+                parentable_type: $parentableType
+                parentable_id: $parentableId
+            }
+        ) {
+            id
+            value
+        }
+    }
+`
+
+export async function createCategory() {
+    const url = process.env.NEXT_PUBLIC_GRAPHQL
+    const variables = {
+        id: uuidv4(),
+        key: process.env.NEXT_PUBLIC_KEY,
+        is_active: true,
+        value: 'eeeeeee2',
+        slug: 'kkkkkkk',
+        parentableType: 'catalog',
+        parentableId: '8297afac-57bf-4886-8767-669e36044390',
+    }
+    const requestHeaders = {
+        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
+    }
+    return await request(url, CREATE_CATEGORY, variables, requestHeaders)
 }
 
 const DELETE_CATEGORY = gql`
