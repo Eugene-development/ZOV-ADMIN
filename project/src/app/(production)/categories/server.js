@@ -36,7 +36,7 @@ const DELETE_CATEGORY = gql`
 `
 
 export async function deleteCategory({ id }) {
-    console.log(id)
+    // console.log(id)
 
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {

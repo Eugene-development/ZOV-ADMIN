@@ -1,14 +1,12 @@
-import { Product } from "@/UI";
-import { getProducts } from "./server"
+import { Product } from '@/UI'
+import { getProducts } from './server'
 
 export default async () => {
+    const data = await getProducts()
 
-  const data = await getProducts()
-
-  return (
-    <>
-        <Product data={data}/>
-    </>
-  );
-};
-
+    return (
+        <>
+            <Product data={data} />
+        </>
+    )
+}
