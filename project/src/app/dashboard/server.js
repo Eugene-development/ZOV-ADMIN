@@ -46,8 +46,8 @@ const UPDATE_CATEGORY = gql`
         $slug: String
         $parentableType: String
         $parentableId: UUID # $updateSeoDescription: UpdateSeoDescriptionInput!
-        # $updateSeoTitle: UpdateSeoTitleInput!
-    ) {
+    ) # $updateSeoTitle: UpdateSeoTitleInput!
+    {
         updateCategory(
             input: {
                 id: $id
@@ -125,7 +125,7 @@ export async function updateCategory() {
 export async function deleteCategory() {
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
-        id: '8aafb774-f6e2-426b-a99b-b6aea2bb1fd8',
+        id: '77fcf4c6-3d19-4648-b187-e042d7b41c1f',
     }
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
