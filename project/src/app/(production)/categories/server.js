@@ -44,7 +44,7 @@ export async function deleteCategory({ id }) {
     }
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
-        'Content-Type': 'application/json',
+        // 'Content-Type': 'application/json',
     }
 
     return await request(url, DELETE_CATEGORY, variables, requestHeaders)
