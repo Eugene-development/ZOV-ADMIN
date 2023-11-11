@@ -13,6 +13,7 @@ const CreateItemCategory = () => {
         currentVisibleCreateCategoryModal,
         closeVisibleCreateCategoryModal,
     } = visibleCreateCategoryModal()
+    
     // const rubric = map(data?.rubric, v => v.id)
     const [selectedParent, setSelectedParent] = useState([]);
     const handleParentChange = (e) => setSelectedParent((rubric[e.target.value]));

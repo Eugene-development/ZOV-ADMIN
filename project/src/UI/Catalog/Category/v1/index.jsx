@@ -2,10 +2,11 @@
 import Toggle from './Toggle'
 import ModalRead from './Modal/Read'
 import ModalCreate from './Modal/Create'
+import ModalUpdate from './Modal/Update'
 import ModalDelete from './Modal/Delete'
 
 import { useCategoryStore } from '@/store/category'
-const { visibleReadCategoryModal, visibleCreateCategoryModal, visibleDeleteCategoryModal } =
+const { visibleReadCategoryModal, visibleCreateCategoryModal, visibleUpdateCategoryModal, visibleDeleteCategoryModal } =
     useCategoryStore
 
 function classNames(...classes) {
@@ -15,12 +16,14 @@ function classNames(...classes) {
 export default ({ data }) => {
     const { openVisibleReadCategoryModal } = visibleReadCategoryModal()
     const { openVisibleCreateCategoryModal } = visibleCreateCategoryModal()
+    const { openVisibleUpdateCategoryModal } = visibleUpdateCategoryModal()
     const { openVisibleDeleteCategoryModal } = visibleDeleteCategoryModal()
 
     return (
         <>
             <ModalRead />
             <ModalCreate />
+            <ModalUpdate />
             <ModalDelete />
             <div className="mt-4 p-4 sm:p-6 lg:p-8">
                 <div className="sm:flex sm:items-center">
@@ -223,14 +226,10 @@ export default ({ data }) => {
                                                         </svg>
                                                     </button>
                                                     <button
-                                                        // onClick={() => {
-                                                        //     is_visible_update_rubric(true)
-                                                        //     current_id_rubric(item.id)
-                                                        //     current_value_rubric(item.value)
-                                                        //     current_parent_value_rubric(item.parent.value)
-                                                        //     current_parent_id_rubric(item.parent.id)
-                                                        //     }
-                                                        // }
+                                                        onClick={() => {
+                                                            openVisibleUpdateCategoryModal()
+                                                            }
+                                                        }
                                                         type="button"
                                                         className="mx-2 inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-500 bg-blue-50 hover:bg-blue-200 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-blue-200 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                     >

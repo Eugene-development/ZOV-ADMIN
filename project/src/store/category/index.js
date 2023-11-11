@@ -20,6 +20,15 @@ const visibleCreateCategoryModal = create(set => ({
         set(() => ({ currentVisibleCreateCategoryModal: false })),
 }))
 
+const visibleUpdateCategoryModal = create(set => ({
+    currentVisibleUpdateCategoryModal: false,
+    openVisibleUpdateCategoryModal: () => {
+        set(() => ({ currentVisibleUpdateCategoryModal: true }))
+    },
+    closeVisibleUpdateCategoryModal: () =>
+        set(() => ({ currentVisibleUpdateCategoryModal: false })),
+}))
+
 const visibleDeleteCategoryModal = create(set => ({
     currentVisibleDeleteCategoryModal: false,
     currentDeleteCategory: [],
@@ -34,5 +43,6 @@ const visibleDeleteCategoryModal = create(set => ({
 export const useCategoryStore = {
     visibleReadCategoryModal,
     visibleCreateCategoryModal,
+    visibleUpdateCategoryModal,
     visibleDeleteCategoryModal,
 }
