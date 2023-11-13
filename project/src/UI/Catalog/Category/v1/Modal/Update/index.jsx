@@ -6,6 +6,8 @@ import { useSlug } from '@/hooks/slug'
 import { useCategoryStore } from '@/store/category'
 const { visibleUpdateCategoryModal } = useCategoryStore
 
+import ButtonUpdate from "./ButtonUpdate"
+
 const UpdateItemCategory = () => {
     const {
         currentVisibleUpdateCategoryModal,
@@ -13,11 +15,11 @@ const UpdateItemCategory = () => {
         currentUpdateCategory,
     } = visibleUpdateCategoryModal()
 
-    console.log(currentUpdateCategory)
+    // console.log(currentUpdateCategory)
 
-    const [changedText, setText] = useState()
-    const [changedSeoTitle, setSeoTitle] = useState()
-    const [changedSeoDescription, setSeoDescription] = useState()
+    const [changedText, setText] = useState('')
+    const [changedSeoTitle, setSeoTitle] = useState('')
+    const [changedSeoDescription, setSeoDescription] = useState('')
     // const seoTitle = changedSeoTitle || currentSeoTitleCategory;
     // const seoDescription = changedSeoDescription || currentSeoDescriptionCategory;
 
@@ -25,8 +27,17 @@ const UpdateItemCategory = () => {
     // const parent = selectedParent ? selectedParent : currentParentIdCategory;
     // const text = changedText ? changedText : currentValueCategory;
 
+
+const { slugify } = useSlug()
+
+let formData = {
+    id: currentUpdateCategory.id,
+        text : changedText,
+        slug: slugify(changedText.translit()),
+    }
+
+
     const handleParentChange = e => setSelectedParent(e.target.value)
-    const { slugify } = useSlug()
     const handleUpdateCategory = e => {
         e.preventDefault()
         if (text.trim().length) {
@@ -234,17 +245,15 @@ const UpdateItemCategory = () => {
                                         </div>
 
                                         <div className="mt-8 sm:mt-10 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
-                                            <button
-                                                type="submit"
-                                                className="inline-flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
-                                                onClick={() =>
-                                                    is_visible_update_category(
-                                                        false,
-                                                    )
-                                                }
-                                            >
-                                                Обновить
-                                            </button>
+
+                                            <div
+                                                    onClick={() =>
+                                                        closeVisibleUpdateCategoryModal()
+                                                    }
+                                                >
+                                                    <ButtonUpdate data={formData}/>
+                                                </div>
+
                                             <button
                                                 type="button"
                                                 className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"

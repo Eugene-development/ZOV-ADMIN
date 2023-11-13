@@ -65,13 +65,62 @@ export async function createCategory(data) {
         is_active: true,
         value: data.text,
         slug: data.slug,
-        parentableType: 'catalog',
+        parentableType: 'rubric',
         parentableId: '8297afac-57bf-4886-8767-669e36044390',
     }
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
     }
     await request(url, CREATE_CATEGORY, variables, requestHeaders)
+    revalidatePath('/categories')
+}
+
+const UPDATE_CATEGORY = gql`
+    mutation update_category(
+        $id: UUID!
+        $key: UUID!
+        $is_active: Boolean
+        $value: String!
+        $slug: String
+        $parentableType: String
+        $parentableId: UUID # $updateSeoDescription: UpdateSeoDescriptionInput!
+        # $updateSeoTitle: UpdateSeoTitleInput!
+    ) {
+        updateCategory(
+            input: {
+                id: $id
+                key: $key
+                is_active: $is_active
+                value: $value
+                slug: $slug
+                parentable_type: $parentableType
+                parentable_id: $parentableId
+                # seoTitle: { update: $updateSeoTitle }
+                # seoDescription: { update: $updateSeoDescription }
+            }
+        ) {
+            value
+        }
+    }
+`
+
+export async function updateCategory(data) {
+    console.log(data)
+    const url = process.env.NEXT_PUBLIC_GRAPHQL
+    const variables = {
+        id: data.id,
+        key: process.env.NEXT_PUBLIC_KEY,
+        is_active: false,
+        value: data.text,
+        slug: data.slug,
+        parentableType: 'rubric',
+        parentableId: process.env.NEXT_PUBLIC_KEY,
+    }
+    const requestHeaders = {
+        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
+    }
+
+    await request(url, UPDATE_CATEGORY, variables, requestHeaders)
     revalidatePath('/categories')
 }
 
