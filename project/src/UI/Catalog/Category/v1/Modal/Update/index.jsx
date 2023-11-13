@@ -10,7 +10,10 @@ const UpdateItemCategory = () => {
     const {
         currentVisibleUpdateCategoryModal,
         closeVisibleUpdateCategoryModal,
+        currentUpdateCategory,
     } = visibleUpdateCategoryModal()
+
+    console.log(currentUpdateCategory)
 
     const [changedText, setText] = useState()
     const [changedSeoTitle, setSeoTitle] = useState()
@@ -164,7 +167,7 @@ const UpdateItemCategory = () => {
                                                     </label>
                                                     <div className="mt-1">
                                                         <input
-                                                            // defaultValue={currentValueCategory}
+                                                            defaultValue={currentUpdateCategory.value}
                                                             onChange={e =>
                                                                 setText(
                                                                     e.target
