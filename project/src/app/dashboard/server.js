@@ -1,6 +1,5 @@
 import { gql, request } from 'graphql-request'
 import { v4 as uuidv4 } from 'uuid'
-import { revalidatePath } from 'next/cache'
 
 const CATEGORY = gql`
     query category {

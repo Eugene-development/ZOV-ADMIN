@@ -6,8 +6,12 @@ import ModalUpdate from './Modal/Update'
 import ModalDelete from './Modal/Delete'
 
 import { useCategoryStore } from '@/store/category'
-const { visibleReadCategoryModal, visibleCreateCategoryModal, visibleUpdateCategoryModal, visibleDeleteCategoryModal } =
-    useCategoryStore
+const {
+    visibleReadCategoryModal,
+    visibleCreateCategoryModal,
+    visibleUpdateCategoryModal,
+    visibleDeleteCategoryModal,
+} = useCategoryStore
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -38,7 +42,9 @@ export default ({ data }) => {
                     </div>
                     <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
                         <button
-                        onClick={()=>{openVisibleCreateCategoryModal()}}
+                            onClick={() => {
+                                openVisibleCreateCategoryModal()
+                            }}
                             type="button"
                             className="inline-flex items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:w-auto"
                         >
@@ -228,8 +234,7 @@ export default ({ data }) => {
                                                     <button
                                                         onClick={() => {
                                                             openVisibleUpdateCategoryModal()
-                                                            }
-                                                        }
+                                                        }}
                                                         type="button"
                                                         className="mx-2 inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-500 bg-blue-50 hover:bg-blue-200 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-blue-200 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                     >
