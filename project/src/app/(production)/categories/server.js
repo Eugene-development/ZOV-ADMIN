@@ -56,14 +56,15 @@ const CREATE_CATEGORY = gql`
     }
 `
 
-export async function createCategory() {
+export async function createCategory(data) {
+    console.log(data)
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
         id: uuidv4(),
         key: process.env.NEXT_PUBLIC_KEY,
         is_active: true,
-        value: 'eeeeeee2',
-        slug: 'kkkkkkk',
+        value: data.data,
+        slug: data.data,
         parentableType: 'catalog',
         parentableId: '8297afac-57bf-4886-8767-669e36044390',
     }

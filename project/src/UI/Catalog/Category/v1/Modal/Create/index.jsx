@@ -105,8 +105,8 @@ const CreateItemCategory = () => {
                                         </div>
                                     </div>
 
-                                    <form
-                                        onSubmit={handleAddCategory}
+                                    <div
+                                        // onSubmit={handleAddCategory}
                                         className="space-y-8 divide-y divide-gray-200"
                                     >
                                         <div className="py-2">
@@ -173,7 +173,7 @@ const CreateItemCategory = () => {
                                         </div>
 
                                         <div className="mt-8 sm:mt-10 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
-                                            <FormCreate />
+                                            <FormCreate data={text}/>
                                             <button
                                                 type="button"
                                                 className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"
@@ -185,7 +185,7 @@ const CreateItemCategory = () => {
                                                 Отменить
                                             </button>
                                         </div>
-                                    </form>
+                                    </div>
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>
