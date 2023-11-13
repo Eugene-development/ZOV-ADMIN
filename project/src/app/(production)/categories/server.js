@@ -63,15 +63,16 @@ export async function createCategory(data) {
         id: uuidv4(),
         key: process.env.NEXT_PUBLIC_KEY,
         is_active: true,
-        value: data.data,
-        slug: data.data,
+        value: data.text,
+        slug: data.slug,
         parentableType: 'catalog',
         parentableId: '8297afac-57bf-4886-8767-669e36044390',
     }
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
     }
-    return await request(url, CREATE_CATEGORY, variables, requestHeaders)
+    await request(url, CREATE_CATEGORY, variables, requestHeaders)
+    revalidatePath('/categories')
 }
 
 const DELETE_CATEGORY = gql`

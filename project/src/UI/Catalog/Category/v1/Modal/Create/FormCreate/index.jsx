@@ -1,6 +1,6 @@
 import { createCategory } from '@/app/(production)/categories/server'
 
-export default function index(data) {
+export default function index({data}) {
     return (
         <button
             onClick={() => createCategory(data)}
