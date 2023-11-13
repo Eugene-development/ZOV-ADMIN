@@ -118,8 +118,8 @@ const UpdateItemCategory = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <form
-                                        onSubmit={handleUpdateCategory}
+                                    <div
+                                        // onSubmit={handleUpdateCategory}
                                         className="space-y-8 divide-y divide-gray-200"
                                     >
                                         <div className="py-2">
@@ -253,7 +253,7 @@ const UpdateItemCategory = () => {
                                                 Отменить
                                             </button>
                                         </div>
-                                    </form>
+                                    </div>
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>

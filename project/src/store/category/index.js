@@ -22,7 +22,9 @@ const visibleCreateCategoryModal = create(set => ({
 
 const visibleUpdateCategoryModal = create(set => ({
     currentVisibleUpdateCategoryModal: false,
-    openVisibleUpdateCategoryModal: () => {
+    currentUpdateCategory: [],
+    openVisibleUpdateCategoryModal: category => {
+        set(() => ({ currentUpdateCategory: category }))
         set(() => ({ currentVisibleUpdateCategoryModal: true }))
     },
     closeVisibleUpdateCategoryModal: () =>

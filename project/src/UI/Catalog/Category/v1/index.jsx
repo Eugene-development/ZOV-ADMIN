@@ -233,7 +233,7 @@ export default ({ data }) => {
                                                     </button>
                                                     <button
                                                         onClick={() => {
-                                                            openVisibleUpdateCategoryModal()
+                                                            openVisibleUpdateCategoryModal(item)
                                                         }}
                                                         type="button"
                                                         className="mx-2 inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-500 bg-blue-50 hover:bg-blue-200 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-blue-200 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
