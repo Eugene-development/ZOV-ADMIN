@@ -17,19 +17,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default ({ data }) => {
-
-    // console.log(data);
-
-    const categories = data.category.map(row => ({
-        id: row.id,
-        value: row.value,
-        timestamp: new Date(row.created_at).getTime(),
-
-        }));
-
-    categories.sort((a, b) => a.timestamp - b.timestamp);
-
+export default ( {data} ) => {
 
     const { openVisibleReadCategoryModal } = visibleReadCategoryModal()
     const { openVisibleCreateCategoryModal } = visibleCreateCategoryModal()
@@ -172,17 +160,17 @@ export default ({ data }) => {
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-200 bg-white">
-                                        {categories.map((item, i) => (
+                                        {data.map((item, i) => (
                                             <tr
                                                 key={item.id}
                                                 className={
-                                                    data.category.includes(item)
+                                                    data.includes(item)
                                                         ? 'bg-gray-50'
                                                         : undefined
                                                 }
                                             >
                                                 <td className="relative w-12 px-6 sm:w-16 sm:px-8">
-                                                    {data.category.includes(
+                                                    {data.includes(
                                                         item,
                                                     ) && (
                                                         <div className="absolute inset-y-0 left-0 w-0.5 bg-indigo-600" />
@@ -204,7 +192,7 @@ export default ({ data }) => {
                                                 <td
                                                     className={classNames(
                                                         'whitespace-nowrap py-4 pr-3 text-sm font-medium',
-                                                        data.category.includes(
+                                                        data.includes(
                                                             item,
                                                         )
                                                             ? 'text-indigo-600'

@@ -2,6 +2,7 @@
 import { revalidatePath } from 'next/cache'
 import { gql, request } from 'graphql-request'
 import { v4 as uuidv4 } from 'uuid'
+import sortBy from 'lodash/sortBy'
 
 const CATEGORIES = gql`
     query category {
@@ -27,7 +28,16 @@ export async function getCategory() {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
     }
 
-    return await request(url, CATEGORIES, variables, requestHeaders)
+    const data = await request(url, CATEGORIES, variables, requestHeaders)
+
+    const categories = data.category.map(row => ({
+        id: row.id,
+        value: row.value,
+        timestamp: new Date(row.created_at).getTime(),
+    }))
+
+    return sortBy(categories, 'timestamp')
+    // return categories.sort((a, b) => a.timestamp - b.timestamp)
 }
 
 const CREATE_CATEGORY = gql`
@@ -85,8 +95,8 @@ const UPDATE_CATEGORY = gql`
         $slug: String
         $parentableType: String
         $parentableId: UUID # $updateSeoDescription: UpdateSeoDescriptionInput!
-    ) # $updateSeoTitle: UpdateSeoTitleInput!
-    {
+        # $updateSeoTitle: UpdateSeoTitleInput!
+    ) {
         updateCategory(
             input: {
                 id: $id
