@@ -30,14 +30,18 @@ export async function getCategory() {
 
     const data = await request(url, CATEGORIES, variables, requestHeaders)
 
-    const categories = data.category.map(row => ({
-        id: row.id,
-        value: row.value,
-        timestamp: new Date(row.created_at).getTime(),
-    }))
+    console.log(data)
+
+    const categories = data.category.map(
+        ({ id, value, product, created_at }) => ({
+            id,
+            value,
+            product,
+            timestamp: new Date(created_at).getTime(),
+        }),
+    )
 
     return sortBy(categories, 'timestamp')
-    // return categories.sort((a, b) => a.timestamp - b.timestamp)
 }
 
 const CREATE_CATEGORY = gql`
