@@ -6,7 +6,7 @@ import sortBy from 'lodash/sortBy'
 
 const CATEGORIES = gql`
     query category {
-        category {
+        category(orderBy: [{ column: CREATED_AT, order: ASC }]) {
             id
             value
             key
@@ -28,20 +28,18 @@ export async function getCategory() {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
     }
 
-    const data = await request(url, CATEGORIES, variables, requestHeaders)
+    return await request(url, CATEGORIES, variables, requestHeaders)
 
-    console.log(data)
+    // const categories = data.category.map(
+    //     ({ id, value, product, created_at }) => ({
+    //         id,
+    //         value,
+    //         product,
+    //         timestamp: new Date(created_at).getTime(),
+    //     }),
+    // )
 
-    const categories = data.category.map(
-        ({ id, value, product, created_at }) => ({
-            id,
-            value,
-            product,
-            timestamp: new Date(created_at).getTime(),
-        }),
-    )
-
-    return sortBy(categories, 'timestamp')
+    // return sortBy(categories, 'timestamp')
 }
 
 const CREATE_CATEGORY = gql`
