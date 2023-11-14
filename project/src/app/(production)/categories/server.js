@@ -9,6 +9,7 @@ const CATEGORIES = gql`
             id
             value
             key
+            created_at
             product {
                 id
                 value
@@ -84,8 +85,8 @@ const UPDATE_CATEGORY = gql`
         $slug: String
         $parentableType: String
         $parentableId: UUID # $updateSeoDescription: UpdateSeoDescriptionInput!
-        # $updateSeoTitle: UpdateSeoTitleInput!
-    ) {
+    ) # $updateSeoTitle: UpdateSeoTitleInput!
+    {
         updateCategory(
             input: {
                 id: $id

@@ -18,6 +18,19 @@ function classNames(...classes) {
 }
 
 export default ({ data }) => {
+
+    // console.log(data);
+
+    const categories = data.category.map(row => ({
+        id: row.id,
+        value: row.value,
+        timestamp: new Date(row.created_at).getTime(),
+
+        }));
+
+    categories.sort((a, b) => a.timestamp - b.timestamp);
+
+
     const { openVisibleReadCategoryModal } = visibleReadCategoryModal()
     const { openVisibleCreateCategoryModal } = visibleCreateCategoryModal()
     const { openVisibleUpdateCategoryModal } = visibleUpdateCategoryModal()
@@ -159,7 +172,7 @@ export default ({ data }) => {
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-200 bg-white">
-                                        {data.category.map((item, i) => (
+                                        {categories.map((item, i) => (
                                             <tr
                                                 key={item.id}
                                                 className={
