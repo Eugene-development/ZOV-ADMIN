@@ -2,11 +2,11 @@
 import { revalidatePath } from 'next/cache'
 import { gql, request } from 'graphql-request'
 import { v4 as uuidv4 } from 'uuid'
-import sortBy from 'lodash/sortBy'
+// import sortBy from 'lodash/sortBy'
 
 const CATEGORIES = gql`
     query category {
-        category(orderBy: [{ column: CREATED_AT, order: ASC }]) {
+        category(orderBy: [{ column: CREATED_AT, order: DESC }]) {
             id
             value
             key
@@ -70,7 +70,7 @@ const CREATE_CATEGORY = gql`
 `
 
 export async function createCategory(data) {
-    console.log(data)
+    // console.log(data)
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
         id: uuidv4(),
@@ -97,8 +97,8 @@ const UPDATE_CATEGORY = gql`
         $slug: String
         $parentableType: String
         $parentableId: UUID # $updateSeoDescription: UpdateSeoDescriptionInput!
-        # $updateSeoTitle: UpdateSeoTitleInput!
-    ) {
+    ) # $updateSeoTitle: UpdateSeoTitleInput!
+    {
         updateCategory(
             input: {
                 id: $id
