@@ -7,7 +7,7 @@ import { useCategoryStore } from '@/store/category'
 const { visibleReadCategoryModal } = useCategoryStore
 
 export default function index() {
-    // const cancelButtonRef = useRef(null)
+    const cancelButtonRef = useRef(null)
     const {
         currentVisibleReadCategoryModal,
         closeVisibleReadCategoryModal,
@@ -110,7 +110,7 @@ export default function index() {
                                         onClick={() =>
                                             closeVisibleReadCategoryModal()
                                         }
-                                        // ref={cancelButtonRef}
+                                        ref={cancelButtonRef}
                                     >
                                         Закрыть
                                     </button>

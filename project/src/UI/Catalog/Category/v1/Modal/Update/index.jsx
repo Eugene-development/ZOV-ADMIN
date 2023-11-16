@@ -23,7 +23,7 @@ const UpdateItemCategory = () => {
     // const seoTitle = changedSeoTitle || currentSeoTitleCategory;
     // const seoDescription = changedSeoDescription || currentSeoDescriptionCategory;
 
-    const [selectedParent, setSelectedParent] = useState()
+    const [selectedParent, setSelectedParent] = useState(currentUpdateCategory.value)
     // const parent = selectedParent ? selectedParent : currentParentIdCategory;
     // const text = changedText ? changedText : currentValueCategory;
 
@@ -38,35 +38,35 @@ let formData = {
 
 
     const handleParentChange = e => setSelectedParent(e.target.value)
-    const handleUpdateCategory = e => {
-        e.preventDefault()
-        if (text.trim().length) {
-            updateCategory({
-                variables: {
-                    id: currentIdCategory,
-                    key,
-                    is_active: true,
-                    value: text,
-                    slug: slugify(text.translit()),
-                    parentableType: 'rubric',
-                    parentableId: Number(parent),
-                    updateSeoTitle: {
-                        key: '1',
-                        id: currentIdSeoTitleCategory,
-                        value: seoTitle,
-                    },
-                    updateSeoDescription: {
-                        key: '1',
-                        id: currentIdSeoDescriptionCategory,
-                        value: seoDescription,
-                    },
-                },
-            })
-            setText('')
-            setSeoTitle('')
-            setSeoDescription('')
-        }
-    }
+    // const handleUpdateCategory = e => {
+    //     e.preventDefault()
+    //     if (text.trim().length) {
+    //         updateCategory({
+    //             variables: {
+    //                 id: currentIdCategory,
+    //                 key,
+    //                 is_active: true,
+    //                 value: text,
+    //                 slug: slugify(text.translit()),
+    //                 parentableType: 'rubric',
+    //                 parentableId: Number(parent),
+    //                 updateSeoTitle: {
+    //                     key: '1',
+    //                     id: currentIdSeoTitleCategory,
+    //                     value: seoTitle,
+    //                 },
+    //                 updateSeoDescription: {
+    //                     key: '1',
+    //                     id: currentIdSeoDescriptionCategory,
+    //                     value: seoDescription,
+    //                 },
+    //             },
+    //         })
+    //         setText('')
+    //         setSeoTitle('')
+    //         setSeoDescription('')
+    //     }
+    // }
 
     const cancelButtonRef = useRef(null)
 
@@ -118,7 +118,7 @@ let formData = {
                                                 as="h3"
                                                 className="text-lg font-medium leading-6 text-gray-900"
                                             >
-                                                Обновление элемента рубрик
+                                                Изменение значений категории
                                             </Dialog.Title>
                                             <div className="mt-2">
                                                 <p className="text-sm text-gray-500">
@@ -143,22 +143,34 @@ let formData = {
                                                         htmlFor="parent"
                                                         className="block text-sm font-medium text-gray-700"
                                                     >
-                                                        Изменить элемент
-                                                        каталога
+                                                        Изменить рубрику категории
                                                     </label>
                                                     <div className="mt-1">
+
                                                         <select
                                                             onChange={e =>
                                                                 handleParentChange(
                                                                     e,
                                                                 )
                                                             }
-                                                            // defaultValue={currentParentIdCategory}
+
+
+                                                            defaultValue={
+                                                                'DEFAULT'
+                                                            }
                                                             id="parent"
                                                             name="parent"
                                                             autoComplete="parent-name"
                                                             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                                         >
+                                                            <option
+                                                                value="DEFAULT"
+                                                                disabled
+                                                                hidden
+                                                            >
+                                                                {currentUpdateCategory?.parent?.value}
+                                                            </option>
+                                                            {/* <option value="значение2" selected>Вариант 2 (дефолтный выбор)</option> */}
                                                             {/* {data.rubric.map((item, key) => {
                                                         return item.id == currentParentIdCategory ?
                                                             <option key={item.id} value={currentParentIdCategory}>{currentParentValueCategory}</option>
