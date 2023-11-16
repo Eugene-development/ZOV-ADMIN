@@ -77,7 +77,7 @@ export default function index() {
                                     <div className="mt-6 grid grid-cols-1 gap-y-6 ">
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
-                                                Значение -{' '}
+                                                Значение:{' '}
                                                 {currentReadCategory.value}
                                                 {/* "{currentValueCategory}" */}
                                             </span>
@@ -85,19 +85,19 @@ export default function index() {
 
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
-                                                Принадлежит рубрике -{' '}
+                                                Принадлежит рубрике:{' '}
                                                 {currentReadCategory.parent?.value}
                                             </span>
                                         </div>
 
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
-                                                {/* Запись создана - {currentCreatedCategory ? new Date(currentCreatedCategory).toLocaleDateString("ru") : "Не указано"} */}
+                                                Запись создана: {currentReadCategory ? new Date(currentReadCategory.created_at).toLocaleDateString("ru") : "Не указано"}
                                             </span>
                                         </div>
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
-                                                {/* Последнее изменение - {currentCreatedCategory ? new Date(currentUpdatedCategory).toLocaleDateString("ru") : "Не указано"} */}
+                                                Последнее изменение: {currentReadCategory ? new Date(currentReadCategory.updated_at).toLocaleDateString("ru") : "Не указано"}
                                             </span>
                                         </div>
                                     </div>
