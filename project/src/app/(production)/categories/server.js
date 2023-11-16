@@ -11,6 +11,13 @@ const CATEGORIES = gql`
             value
             key
             created_at
+            updated_at
+            parent: parentable {
+                ... on Rubric {
+                    id
+                    value
+                }
+            }
             product {
                 id
                 value

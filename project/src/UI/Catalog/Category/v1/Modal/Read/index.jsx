@@ -13,6 +13,7 @@ export default function index() {
         closeVisibleReadCategoryModal,
         currentReadCategory,
     } = visibleReadCategoryModal()
+
     return (
         <Transition.Root show={currentVisibleReadCategoryModal} as={Fragment}>
             <Dialog
@@ -84,8 +85,8 @@ export default function index() {
 
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
-                                                Принадлежит элементу меню -
-                                                {/* "{currentParentValueCategory}" */}
+                                                Принадлежит рубрике -{' '}
+                                                {currentReadCategory.parent?.value}
                                             </span>
                                         </div>
 
