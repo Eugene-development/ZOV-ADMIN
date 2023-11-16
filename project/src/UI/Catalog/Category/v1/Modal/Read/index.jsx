@@ -7,7 +7,7 @@ import { useCategoryStore } from '@/store/category'
 const { visibleReadCategoryModal } = useCategoryStore
 
 export default function index() {
-    const cancelButtonRef = useRef(null)
+    // const cancelButtonRef = useRef(null)
     const {
         currentVisibleReadCategoryModal,
         closeVisibleReadCategoryModal,
