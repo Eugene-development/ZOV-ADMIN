@@ -25,6 +25,14 @@ const CATEGORIES = gql`
         }
     }
 `
+const ALL_RUBRICS = gql`
+    query rubric {
+        rubric(orderBy: [{ column: CREATED_AT, order: DESC }]) {
+            id
+            value
+        }
+    }
+`
 
 export async function getCategory() {
     const url = process.env.NEXT_PUBLIC_GRAPHQL
@@ -36,17 +44,18 @@ export async function getCategory() {
     }
 
     return await request(url, CATEGORIES, variables, requestHeaders)
+}
 
-    // const categories = data.category.map(
-    //     ({ id, value, product, created_at }) => ({
-    //         id,
-    //         value,
-    //         product,
-    //         timestamp: new Date(created_at).getTime(),
-    //     }),
-    // )
+export async function getAllRubric() {
+    const url = process.env.NEXT_PUBLIC_GRAPHQL
+    const variables = {
+        key: process.env.NEXT_PUBLIC_KEY,
+    }
+    const requestHeaders = {
+        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
+    }
 
-    // return sortBy(categories, 'timestamp')
+    return await request(url, ALL_RUBRICS, variables, requestHeaders)
 }
 
 const CREATE_CATEGORY = gql`

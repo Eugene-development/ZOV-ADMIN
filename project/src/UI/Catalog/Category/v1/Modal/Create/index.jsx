@@ -13,11 +13,14 @@ const CreateItemCategory = () => {
     const {
         currentVisibleCreateCategoryModal,
         closeVisibleCreateCategoryModal,
+        allRubric
     } = visibleCreateCategoryModal()
+
 
     // const rubric = map(data?.rubric, v => v.id)
     const [selectedParent, setSelectedParent] = useState([])
-    const handleParentChange = e => setSelectedParent(rubric[e.target.value])
+    console.log(selectedParent)
+    const handleParentChange = e => setSelectedParent(e.target.value)
 
     const [text, setText] = useState('')
 
@@ -147,7 +150,7 @@ const CreateItemCategory = () => {
                                                             >
                                                                 Выбрать
                                                             </option>
-                                                            {/* {data.rubric.map((item, key) => <option key={item.id} value={item.id}>{item.value}</option>)} */}
+                                                            {allRubric?.rubric?.map((item, key) => <option key={item.id} value={item.id}>{item.value}</option>)}
                                                         </select>
                                                     </div>
                                                 </div>

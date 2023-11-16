@@ -13,7 +13,10 @@ const visibleReadCategoryModal = create(set => ({
 
 const visibleCreateCategoryModal = create(set => ({
     currentVisibleCreateCategoryModal: false,
-    openVisibleCreateCategoryModal: () => {
+    allRubric: [],
+    openVisibleCreateCategoryModal: allRubrics => {
+        // console.log(allRubrics)
+        set(() => ({ allRubric: allRubrics }))
         set(() => ({ currentVisibleCreateCategoryModal: true }))
     },
     closeVisibleCreateCategoryModal: () =>

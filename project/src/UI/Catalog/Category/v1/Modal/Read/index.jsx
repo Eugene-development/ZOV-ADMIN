@@ -13,7 +13,6 @@ export default function index() {
         closeVisibleReadCategoryModal,
         currentReadCategory,
     } = visibleReadCategoryModal()
-
     return (
         <Transition.Root show={currentVisibleReadCategoryModal} as={Fragment}>
             <Dialog
