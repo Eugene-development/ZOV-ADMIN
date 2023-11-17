@@ -6,36 +6,46 @@ import { useSlug } from '@/hooks/slug'
 import { useCategoryStore } from '@/store/category'
 const { visibleUpdateCategoryModal } = useCategoryStore
 
-import ButtonUpdate from "./ButtonUpdate"
+import ButtonUpdate from './ButtonUpdate'
 
 const UpdateItemCategory = () => {
     const {
         currentVisibleUpdateCategoryModal,
         closeVisibleUpdateCategoryModal,
         currentUpdateCategory,
-        allRubric
+        allRubric,
     } = visibleUpdateCategoryModal()
 
-    const [changedText, setText] = useState('')
+    const [changedText, setText] = useState(currentUpdateCategory.value)
     const [changedSeoTitle, setSeoTitle] = useState('')
     const [changedSeoDescription, setSeoDescription] = useState('')
     // const seoTitle = changedSeoTitle || currentSeoTitleCategory;
     // const seoDescription = changedSeoDescription || currentSeoDescriptionCategory;
 
-    const [selectedParent, setSelectedParent] = useState(currentUpdateCategory.value)
+    const [selectedParent, setSelectedParent] = useState(
+        currentUpdateCategory?.parent?.id,
+    )
     // const parent = selectedParent ? selectedParent : currentParentIdCategory;
     // const text = changedText ? changedText : currentValueCategory;
 
+    const { slugify } = useSlug()
 
-const { slugify } = useSlug()
+    let formData = {
+        id: currentUpdateCategory.id,
+        selectedParent,
+        text: changedText || currentUpdateCategory.value,
+        slug: changedText ? slugify(changedText.translit()) : slugify(currentUpdateCategory.value.translit()),
+    }
 
-let formData = {
-    id: currentUpdateCategory.id,
-    selectedParent,
-    text : changedText,
-    slug: slugify(changedText.translit()),
-}
+    const handleUpdateCategory = () => {
 
+        closeVisibleUpdateCategoryModal();
+        setText('')
+    //         setSeoTitle('')
+    //         setSeoDescription('')
+
+
+    }
 
     const handleParentChange = e => setSelectedParent(e.target.value)
     // const handleUpdateCategory = e => {
@@ -143,18 +153,16 @@ let formData = {
                                                         htmlFor="parent"
                                                         className="block text-sm font-medium text-gray-700"
                                                     >
-                                                        Изменить рубрику категории
+                                                        Изменить рубрику
+                                                        категории
                                                     </label>
                                                     <div className="mt-1">
-
                                                         <select
                                                             onChange={e =>
                                                                 handleParentChange(
                                                                     e,
                                                                 )
                                                             }
-
-
                                                             defaultValue={
                                                                 'DEFAULT'
                                                             }
@@ -168,9 +176,28 @@ let formData = {
                                                                 disabled
                                                                 hidden
                                                             >
-                                                                {currentUpdateCategory?.parent?.value}
+                                                                {
+                                                                    currentUpdateCategory
+                                                                        ?.parent
+                                                                        ?.value
+                                                                }
                                                             </option>
-                                                            {allRubric?.rubric?.map((item, key) => <option key={item.id} value={item.id}>{item.value}</option>)}
+                                                            {allRubric?.rubric?.map(
+                                                                (item, key) => (
+                                                                    <option
+                                                                        key={
+                                                                            item.id
+                                                                        }
+                                                                        value={
+                                                                            item.id
+                                                                        }
+                                                                    >
+                                                                        {
+                                                                            item.value
+                                                                        }
+                                                                    </option>
+                                                                ),
+                                                            )}
 
                                                             {/* <option value="значение2" selected>Вариант 2 (дефолтный выбор)</option> */}
                                                             {/* {data.rubric.map((item, key) => {
@@ -192,7 +219,9 @@ let formData = {
                                                     </label>
                                                     <div className="mt-1">
                                                         <input
-                                                            defaultValue={currentUpdateCategory.value}
+                                                            defaultValue={
+                                                                currentUpdateCategory.value
+                                                            }
                                                             onChange={e =>
                                                                 setText(
                                                                     e.target
@@ -258,26 +287,33 @@ let formData = {
                                             </div>
                                         </div>
 
-                                        <div className="mt-8 sm:mt-10 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
+                                        <div className="">
+                                            <div className="mt-8 flex justify-between">
+                                                <div
+                                                    onClick={() => { handleUpdateCategory()
 
-                                            <div
-                                                    onClick={() =>
-                                                        closeVisibleUpdateCategoryModal()
+
+                                                    }
+
                                                     }
                                                 >
-                                                    <ButtonUpdate data={formData}/>
+                                                    <ButtonUpdate
+                                                        data={formData}
+                                                    />
                                                 </div>
-
-                                            <button
-                                                type="button"
-                                                className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"
-                                                onClick={() =>
-                                                    closeVisibleUpdateCategoryModal()
-                                                }
-                                                ref={cancelButtonRef}
-                                            >
-                                                Отменить
-                                            </button>
+                                                <div>
+                                                    <button
+                                                        type="button"
+                                                        className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-20 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"
+                                                        onClick={() =>
+                                                            closeVisibleUpdateCategoryModal()
+                                                        }
+                                                        ref={cancelButtonRef}
+                                                    >
+                                                        Отменить
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </Dialog.Panel>

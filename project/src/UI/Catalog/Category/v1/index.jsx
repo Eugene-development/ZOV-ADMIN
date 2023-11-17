@@ -17,10 +17,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default ( {data, allRubric} ) => {
-
-
-
+export default ({ data, allRubric }) => {
     const { openVisibleReadCategoryModal } = visibleReadCategoryModal()
     const { openVisibleCreateCategoryModal } = visibleCreateCategoryModal()
     const { openVisibleUpdateCategoryModal } = visibleUpdateCategoryModal()
@@ -237,7 +234,8 @@ export default ( {data, allRubric} ) => {
                                                     <button
                                                         onClick={() => {
                                                             openVisibleUpdateCategoryModal(
-                                                                item, allRubric
+                                                                item,
+                                                                allRubric,
                                                             )
                                                         }}
                                                         type="button"

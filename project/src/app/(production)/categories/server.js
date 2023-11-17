@@ -86,7 +86,6 @@ const CREATE_CATEGORY = gql`
 `
 
 export async function createCategory(data) {
-    // console.log(data)
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
         id: uuidv4(),
@@ -113,8 +112,8 @@ const UPDATE_CATEGORY = gql`
         $slug: String
         $parentableType: String
         $parentableId: UUID # $updateSeoDescription: UpdateSeoDescriptionInput!
-        # $updateSeoTitle: UpdateSeoTitleInput!
-    ) {
+    ) # $updateSeoTitle: UpdateSeoTitleInput!
+    {
         updateCategory(
             input: {
                 id: $id
