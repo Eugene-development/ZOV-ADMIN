@@ -95,7 +95,7 @@ export async function createCategory(data) {
         value: data.text,
         slug: data.slug,
         parentableType: 'rubric',
-        parentableId: '8297afac-57bf-4886-8767-669e36044390',
+        parentableId: data.selectedParent,
     }
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
@@ -113,8 +113,8 @@ const UPDATE_CATEGORY = gql`
         $slug: String
         $parentableType: String
         $parentableId: UUID # $updateSeoDescription: UpdateSeoDescriptionInput!
-    ) # $updateSeoTitle: UpdateSeoTitleInput!
-    {
+        # $updateSeoTitle: UpdateSeoTitleInput!
+    ) {
         updateCategory(
             input: {
                 id: $id
