@@ -113,8 +113,8 @@ const UPDATE_CATEGORY = gql`
         $slug: String
         $parentableType: String
         $parentableId: UUID # $updateSeoDescription: UpdateSeoDescriptionInput!
-    ) # $updateSeoTitle: UpdateSeoTitleInput!
-    {
+        # $updateSeoTitle: UpdateSeoTitleInput!
+    ) {
         updateCategory(
             input: {
                 id: $id
@@ -134,7 +134,6 @@ const UPDATE_CATEGORY = gql`
 `
 
 export async function updateCategory(data) {
-    console.log(data)
     const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
         id: data.id,
