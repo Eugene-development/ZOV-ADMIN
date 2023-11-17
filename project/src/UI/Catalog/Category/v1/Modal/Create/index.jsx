@@ -19,7 +19,6 @@ const CreateItemCategory = () => {
 
     // const rubric = map(data?.rubric, v => v.id)
     const [selectedParent, setSelectedParent] = useState([])
-    console.log(selectedParent)
     const handleParentChange = e => setSelectedParent(e.target.value)
 
     const [text, setText] = useState('')
@@ -27,6 +26,7 @@ const CreateItemCategory = () => {
     const { slugify } = useSlug()
 
     let formData = {
+        selectedParent,
         text,
         slug: slugify(text.translit()),
     }

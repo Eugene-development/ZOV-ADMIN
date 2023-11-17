@@ -237,7 +237,7 @@ export default ( {data, allRubric} ) => {
                                                     <button
                                                         onClick={() => {
                                                             openVisibleUpdateCategoryModal(
-                                                                item,
+                                                                item, allRubric
                                                             )
                                                         }}
                                                         type="button"

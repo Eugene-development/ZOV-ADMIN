@@ -13,9 +13,8 @@ const UpdateItemCategory = () => {
         currentVisibleUpdateCategoryModal,
         closeVisibleUpdateCategoryModal,
         currentUpdateCategory,
+        allRubric
     } = visibleUpdateCategoryModal()
-
-    // console.log(currentUpdateCategory)
 
     const [changedText, setText] = useState('')
     const [changedSeoTitle, setSeoTitle] = useState('')
@@ -32,9 +31,10 @@ const { slugify } = useSlug()
 
 let formData = {
     id: currentUpdateCategory.id,
-        text : changedText,
-        slug: slugify(changedText.translit()),
-    }
+    selectedParent,
+    text : changedText,
+    slug: slugify(changedText.translit()),
+}
 
 
     const handleParentChange = e => setSelectedParent(e.target.value)
@@ -170,6 +170,8 @@ let formData = {
                                                             >
                                                                 {currentUpdateCategory?.parent?.value}
                                                             </option>
+                                                            {allRubric?.rubric?.map((item, key) => <option key={item.id} value={item.id}>{item.value}</option>)}
+
                                                             {/* <option value="значение2" selected>Вариант 2 (дефолтный выбор)</option> */}
                                                             {/* {data.rubric.map((item, key) => {
                                                         return item.id == currentParentIdCategory ?
