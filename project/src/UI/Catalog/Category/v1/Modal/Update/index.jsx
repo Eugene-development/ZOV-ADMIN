@@ -34,7 +34,7 @@ const UpdateItemCategory = () => {
         id: currentUpdateCategory.id,
         selectedParent,
         text: changedText || currentUpdateCategory.value,
-        slug: changedText ? slugify(changedText.translit()) : slugify(currentUpdateCategory.value.translit()),
+        slug: changedText ? slugify(changedText.translit()) : currentUpdateCategory.slug,
     }
 
     const handleUpdateCategory = () => {

@@ -9,6 +9,7 @@ const CATEGORIES = gql`
         category(orderBy: [{ column: CREATED_AT, order: DESC }]) {
             id
             value
+            slug
             key
             created_at
             updated_at
@@ -112,8 +113,8 @@ const UPDATE_CATEGORY = gql`
         $slug: String
         $parentableType: String
         $parentableId: UUID # $updateSeoDescription: UpdateSeoDescriptionInput!
-    ) # $updateSeoTitle: UpdateSeoTitleInput!
-    {
+        # $updateSeoTitle: UpdateSeoTitleInput!
+    ) {
         updateCategory(
             input: {
                 id: $id
