@@ -113,8 +113,8 @@ const UPDATE_CATEGORY = gql`
         $slug: String
         $parentableType: String
         $parentableId: UUID # $updateSeoDescription: UpdateSeoDescriptionInput!
-        # $updateSeoTitle: UpdateSeoTitleInput!
-    ) {
+    ) # $updateSeoTitle: UpdateSeoTitleInput!
+    {
         updateCategory(
             input: {
                 id: $id
@@ -143,7 +143,7 @@ export async function updateCategory(data) {
         value: data.text,
         slug: data.slug,
         parentableType: 'rubric',
-        parentableId: process.env.NEXT_PUBLIC_KEY,
+        parentableId: data.selectedParent,
     }
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
