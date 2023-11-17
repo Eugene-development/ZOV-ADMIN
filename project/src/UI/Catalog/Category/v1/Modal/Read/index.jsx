@@ -59,7 +59,7 @@ export default function index() {
                                         >
                                             Категория
                                         </Dialog.Title>
-                                        <div className="mt-2">
+                                        <div className="hidden md:block mt-2">
                                             <p className="text-sm text-gray-500">
                                                 Lorem ipsum, dolor sit amet
                                                 consectetur adipisicing elit.

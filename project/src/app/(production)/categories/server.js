@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 const CATEGORIES = gql`
     query category {
-        category(orderBy: [{ column: CREATED_AT, order: DESC }]) {
+        category(orderBy: [{ column: VALUE, order: ASC }]) {
             id
             value
             slug
@@ -28,7 +28,7 @@ const CATEGORIES = gql`
 `
 const ALL_RUBRICS = gql`
     query rubric {
-        rubric(orderBy: [{ column: CREATED_AT, order: DESC }]) {
+        rubric(orderBy: [{ column: VALUE, order: ASC }]) {
             id
             value
         }

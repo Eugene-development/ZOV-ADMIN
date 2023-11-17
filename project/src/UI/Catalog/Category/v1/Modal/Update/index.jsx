@@ -130,7 +130,7 @@ const UpdateItemCategory = () => {
                                             >
                                                 Изменение значений категории
                                             </Dialog.Title>
-                                            <div className="mt-2">
+                                            <div className="hidden md:block mt-2">
                                                 <p className="text-sm text-gray-500">
                                                     Обновление действия
                                                     необратимо. Будьте
@@ -304,7 +304,7 @@ const UpdateItemCategory = () => {
                                                 <div>
                                                     <button
                                                         type="button"
-                                                        className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-20 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"
+                                                        className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-24 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"
                                                         onClick={() =>
                                                             closeVisibleUpdateCategoryModal()
                                                         }
