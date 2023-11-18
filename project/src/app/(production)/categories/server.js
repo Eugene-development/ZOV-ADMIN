@@ -132,9 +132,10 @@ const UPDATE_CATEGORY = gql`
         $value: String!
         $slug: String
         $parentableType: String
-        $parentableId: UUID # $updateSeoDescription: UpdateSeoDescriptionInput!
-    ) # $updateSeoTitle: UpdateSeoTitleInput!
-    {
+        $parentableId: UUID
+        $updateSeoTitle: UpdateSeoTitleInput!
+        $updateSeoDescription: UpdateSeoDescriptionInput!
+    ) {
         updateCategory(
             input: {
                 id: $id
@@ -144,8 +145,8 @@ const UPDATE_CATEGORY = gql`
                 slug: $slug
                 parentable_type: $parentableType
                 parentable_id: $parentableId
-                # seoTitle: { update: $updateSeoTitle }
-                # seoDescription: { update: $updateSeoDescription }
+                seoTitle: { update: $updateSeoTitle }
+                seoDescription: { update: $updateSeoDescription }
             }
         ) {
             value
@@ -158,11 +159,21 @@ export async function updateCategory(data) {
     const variables = {
         id: data.id,
         key: process.env.NEXT_PUBLIC_KEY,
-        is_active: false,
+        is_active: true,
         value: data.text,
         slug: data.slug,
         parentableType: 'rubric',
         parentableId: data.selectedParent,
+        updateSeoTitle: {
+            id: data.idTitle,
+            key: process.env.NEXT_PUBLIC_KEY,
+            value: data.title,
+        },
+        updateSeoDescription: {
+            id: data.idDescription,
+            key: process.env.NEXT_PUBLIC_KEY,
+            value: data.description,
+        },
     }
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,

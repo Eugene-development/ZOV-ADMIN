@@ -35,14 +35,19 @@ const UpdateItemCategory = () => {
         selectedParent,
         text: changedText || currentUpdateCategory.value,
         slug: changedText ? slugify(changedText.translit()) : currentUpdateCategory.slug,
+        idTitle: currentUpdateCategory.seoTitle?.id,
+        title: changedSeoTitle || currentUpdateCategory.seoTitle?.value,
+        idDescription: currentUpdateCategory.seoDescription?.id,
+        description: changedSeoDescription || currentUpdateCategory.seoDescription?.value,
+
     }
 
     const handleUpdateCategory = () => {
 
         closeVisibleUpdateCategoryModal();
         setText('')
-    //         setSeoTitle('')
-    //         setSeoDescription('')
+        setSeoTitle('')
+        setSeoDescription('')
 
 
     }
@@ -245,7 +250,9 @@ const UpdateItemCategory = () => {
                                                     </label>
                                                     <div className="mt-1">
                                                         <input
-                                                            // defaultValue={currentSeoTitleCategory}
+                                                            defaultValue={
+                                                                currentUpdateCategory.seoTitle?.value
+                                                            }
                                                             onChange={e =>
                                                                 setSeoTitle(
                                                                     e.target
@@ -269,7 +276,9 @@ const UpdateItemCategory = () => {
                                                     </label>
                                                     <div className="mt-1">
                                                         <input
-                                                            // defaultValue={currentSeoDescriptionCategory}
+                                                            defaultValue={
+                                                                currentUpdateCategory.seoDescription?.value
+                                                            }
                                                             onChange={e =>
                                                                 setSeoDescription(
                                                                     e.target
