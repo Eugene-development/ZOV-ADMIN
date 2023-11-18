@@ -31,7 +31,7 @@ const CreateItemCategory = () => {
         text,
         slug: slugify(text.translit()),
         title,
-        description
+        description,
     }
 
     const handleAddCategory = e => {

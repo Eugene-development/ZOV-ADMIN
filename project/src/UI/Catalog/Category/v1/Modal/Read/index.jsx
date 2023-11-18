@@ -93,16 +93,21 @@ export default function index() {
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
                                                 SEO Title:{' '}
-                                                {currentReadCategory.seoTitle?.value}
+                                                {
+                                                    currentReadCategory.seoTitle
+                                                        ?.value
+                                                }
                                             </span>
                                         </div>
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
                                                 SEO Description:{' '}
-                                                {currentReadCategory.seoDescription?.value}
+                                                {
+                                                    currentReadCategory
+                                                        .seoDescription?.value
+                                                }
                                             </span>
                                         </div>
-
 
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">

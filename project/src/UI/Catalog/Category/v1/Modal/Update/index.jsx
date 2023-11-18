@@ -34,22 +34,22 @@ const UpdateItemCategory = () => {
         id: currentUpdateCategory.id,
         selectedParent,
         text: changedText || currentUpdateCategory.value,
-        slug: changedText ? slugify(changedText.translit()) : currentUpdateCategory.slug,
+        slug: changedText
+            ? slugify(changedText.translit())
+            : currentUpdateCategory.slug,
         idTitle: currentUpdateCategory.seoTitle?.id,
         title: changedSeoTitle || currentUpdateCategory.seoTitle?.value,
         idDescription: currentUpdateCategory.seoDescription?.id,
-        description: changedSeoDescription || currentUpdateCategory.seoDescription?.value,
-
+        description:
+            changedSeoDescription ||
+            currentUpdateCategory.seoDescription?.value,
     }
 
     const handleUpdateCategory = () => {
-
-        closeVisibleUpdateCategoryModal();
+        closeVisibleUpdateCategoryModal()
         setText('')
         setSeoTitle('')
         setSeoDescription('')
-
-
     }
 
     const handleParentChange = e => setSelectedParent(e.target.value)
@@ -251,7 +251,9 @@ const UpdateItemCategory = () => {
                                                     <div className="mt-1">
                                                         <input
                                                             defaultValue={
-                                                                currentUpdateCategory.seoTitle?.value
+                                                                currentUpdateCategory
+                                                                    .seoTitle
+                                                                    ?.value
                                                             }
                                                             onChange={e =>
                                                                 setSeoTitle(
@@ -277,7 +279,9 @@ const UpdateItemCategory = () => {
                                                     <div className="mt-1">
                                                         <input
                                                             defaultValue={
-                                                                currentUpdateCategory.seoDescription?.value
+                                                                currentUpdateCategory
+                                                                    .seoDescription
+                                                                    ?.value
                                                             }
                                                             onChange={e =>
                                                                 setSeoDescription(
@@ -299,12 +303,9 @@ const UpdateItemCategory = () => {
                                         <div className="">
                                             <div className="mt-8 flex justify-between">
                                                 <div
-                                                    onClick={() => { handleUpdateCategory()
-
-
-                                                    }
-
-                                                    }
+                                                    onClick={() => {
+                                                        handleUpdateCategory()
+                                                    }}
                                                 >
                                                     <ButtonUpdate
                                                         data={formData}
