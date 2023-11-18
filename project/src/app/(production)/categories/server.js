@@ -13,6 +13,14 @@ const CATEGORIES = gql`
             key
             created_at
             updated_at
+            seoTitle {
+                id
+                value
+            }
+            seoDescription {
+                id
+                value
+            }
             parent: parentable {
                 ... on Rubric {
                     id
@@ -68,6 +76,8 @@ const CREATE_CATEGORY = gql`
         $slug: String!
         $parentableType: String
         $parentableId: UUID!
+        $createSeoTitle: CreateSeoTitleInput!
+        $createSeoDescription: CreateSeoDescriptionInput!
     ) {
         createCategory(
             input: {
@@ -78,6 +88,8 @@ const CREATE_CATEGORY = gql`
                 slug: $slug
                 parentable_type: $parentableType
                 parentable_id: $parentableId
+                seoTitle: { create: $createSeoTitle }
+                seoDescription: { create: $createSeoDescription }
             }
         ) {
             id
@@ -96,6 +108,14 @@ export async function createCategory(data) {
         slug: data.slug,
         parentableType: 'rubric',
         parentableId: data.selectedParent,
+        createSeoTitle: {
+            key: '880e8400-e29b-41d4-a716-446655440000',
+            value: 'zzzzzzz',
+        },
+        createSeoDescription: {
+            key: '990e8400-e29b-41d4-a716-446655440000',
+            value: 'zzzz',
+        },
     }
     const requestHeaders = {
         ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,

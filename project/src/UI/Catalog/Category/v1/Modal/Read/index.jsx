@@ -78,7 +78,6 @@ export default function index() {
                                             <span className="block text-sm font-medium text-gray-700">
                                                 Значение:{' '}
                                                 {currentReadCategory.value}
-                                                {/* "{currentValueCategory}" */}
                                             </span>
                                         </div>
 
@@ -91,6 +90,19 @@ export default function index() {
                                                 }
                                             </span>
                                         </div>
+                                        <div className="">
+                                            <span className="block text-sm font-medium text-gray-700">
+                                                SEO Title:{' '}
+                                                {currentReadCategory.seoTitle?.value}
+                                            </span>
+                                        </div>
+                                        <div className="">
+                                            <span className="block text-sm font-medium text-gray-700">
+                                                SEO Description:{' '}
+                                                {currentReadCategory.seoDescription?.value}
+                                            </span>
+                                        </div>
+
 
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
