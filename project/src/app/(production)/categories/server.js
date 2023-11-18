@@ -109,12 +109,12 @@ export async function createCategory(data) {
         parentableType: 'rubric',
         parentableId: data.selectedParent,
         createSeoTitle: {
-            key: '880e8400-e29b-41d4-a716-446655440000',
-            value: 'zzzzzzz',
+            key: process.env.NEXT_PUBLIC_KEY,
+            value: data.title,
         },
         createSeoDescription: {
-            key: '990e8400-e29b-41d4-a716-446655440000',
-            value: 'zzzz',
+            key: process.env.NEXT_PUBLIC_KEY,
+            value: data.description,
         },
     }
     const requestHeaders = {
@@ -133,8 +133,8 @@ const UPDATE_CATEGORY = gql`
         $slug: String
         $parentableType: String
         $parentableId: UUID # $updateSeoDescription: UpdateSeoDescriptionInput!
-        # $updateSeoTitle: UpdateSeoTitleInput!
-    ) {
+    ) # $updateSeoTitle: UpdateSeoTitleInput!
+    {
         updateCategory(
             input: {
                 id: $id
