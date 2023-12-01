@@ -89,16 +89,48 @@ export default function index() {
                                             </span>
                                         </div>
 
+
+
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
-                                                {/* Запись создана - {currentCreatedReadRubric ? new Date(currentCreatedReadRubric).toLocaleDateString("ru") : "Не указано"} */}
+                                                SEO Title:{' '}
+                                                {
+                                                    currentReadRubric.seoTitle
+                                                        ?.value
+                                                }
                                             </span>
                                         </div>
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
-                                                {/* Последнее изменение - {currentCreatedReadRubric ? new Date(currentUpdatedReadRubric).toLocaleDateString("ru") : "Не указано"} */}
+                                                SEO Description:{' '}
+                                                {
+                                                    currentReadRubric
+                                                        .seoDescription?.value
+                                                }
                                             </span>
                                         </div>
+
+                                        <div className="">
+                                            <span className="block text-sm font-medium text-gray-700">
+                                                Запись создана:{' '}
+                                                {currentReadRubric.created_at
+                                                    ? new Date(
+                                                          currentReadRubric.created_at,
+                                                      ).toLocaleDateString('ru')
+                                                    : 'Не указано'}
+                                            </span>
+                                        </div>
+                                        <div className="">
+                                            <span className="block text-sm font-medium text-gray-700">
+                                                Последнее изменение:{' '}
+                                                {currentReadRubric.updated_at
+                                                    ? new Date(
+                                                          currentReadRubric.updated_at,
+                                                      ).toLocaleDateString('ru')
+                                                    : 'Не указано'}
+                                            </span>
+                                        </div>
+
                                     </div>
                                 </div>
 

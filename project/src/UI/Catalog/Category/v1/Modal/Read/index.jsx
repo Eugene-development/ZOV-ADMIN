@@ -112,7 +112,7 @@ export default function index() {
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
                                                 Запись создана:{' '}
-                                                {currentReadCategory
+                                                {currentReadCategory.created_at
                                                     ? new Date(
                                                           currentReadCategory.created_at,
                                                       ).toLocaleDateString('ru')
@@ -122,7 +122,7 @@ export default function index() {
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
                                                 Последнее изменение:{' '}
-                                                {currentReadCategory
+                                                {currentReadCategory.updated_at
                                                     ? new Date(
                                                           currentReadCategory.updated_at,
                                                       ).toLocaleDateString('ru')
