@@ -4,23 +4,24 @@ import { Fragment, useState } from 'react'
 import { Dialog, Transition, Disclosure } from '@headlessui/react'
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
 import {
-    CalendarIcon,
+    FireIcon,
     ChartPieIcon,
-    DocumentDuplicateIcon,
+    WrenchScrewdriverIcon,
     FolderIcon,
     HomeIcon,
     UsersIcon,
     XMarkIcon,
     Cog6ToothIcon,
+    HandThumbUpIcon
 } from '@heroicons/react/24/outline'
 
 import { useBarStore } from '@/store/bar'
 const { visibleBar } = useBarStore
 
 const navigation = [
-    { name: 'Дашборд', href: '/dashboard', icon: ChartPieIcon, current: true },
+    // { name: 'Дашборд', href: '/dashboard', icon: ChartPieIcon, current: true },
     {
-        name: 'Главная страница',
+        name: 'Главная',
         href: '/main',
         icon: HomeIcon,
         current: false,
@@ -30,15 +31,26 @@ const navigation = [
             { name: 'Customer Success', href: '#' },
         ],
     },
-
     {
-        name: 'Блог',
-        icon: UsersIcon,
+        name: 'Компания',
+        href: '/company',
+        icon: HomeIcon,
         current: false,
         children: [
-            { name: 'Список постов', href: '#' },
-            { name: 'Human Resources', href: '#' },
-            { name: 'Customer Success', href: '#' },
+            { name: 'хххх', href: '#' },
+            { name: 'хххх', href: '#' },
+            { name: 'хххх', href: '#' },
+        ],
+    },
+    {
+        name: 'Блог',
+        icon: HandThumbUpIcon,
+        current: false,
+        children: [
+            { name: 'Список', href: '#' },
+            { name: 'Категория', href: '#' },
+            { name: 'Пост', href: '#' },
+            { name: 'Автор', href: '#' },
         ],
     },
     {
@@ -46,50 +58,46 @@ const navigation = [
         icon: FolderIcon,
         current: false,
         children: [
-            // { name: 'Меню', href: '/menu' },
             { name: 'Рубрика', href: '/rubrics' },
             { name: 'Категория', href: '/categories' },
             { name: 'Продукт', href: '/products' },
+            { name: 'Тег', href: '/products' },
         ],
     },
     {
         name: 'Сервис',
         href: '/#',
-        icon: DocumentDuplicateIcon,
+        icon: WrenchScrewdriverIcon,
         current: false,
         children: [
-            { name: 'Список постов', href: '#' },
-            { name: 'Human Resources', href: '#' },
-            { name: 'Customer Success', href: '#' },
+            { name: 'Список', href: '#' },
         ],
     },
     {
         name: 'Акции',
         href: '/#',
-        icon: DocumentDuplicateIcon,
+        icon: FireIcon,
         current: false,
         children: [
-            { name: 'Список постов', href: '#' },
-            { name: 'Human Resources', href: '#' },
-            { name: 'Customer Success', href: '#' },
+            { name: 'Список', href: '#' },
         ],
     },
     {
-        name: 'Контакты',
+        name: 'Салоны',
         href: '/',
         icon: UsersIcon,
         current: false,
         children: [
-            { name: 'Список постов', href: '#' },
-            { name: 'Human Resources', href: '#' },
-            { name: 'Customer Success', href: '#' },
+            { name: 'Руководство', href: '#' },
+            { name: 'Сервис', href: '#' },
+            { name: 'Дизайнеры', href: '#' },
         ],
     },
 ]
 const teams = [
-    { id: 1, name: 'СЕО', href: '#', initial: 'С', current: false },
+    { id: 1, name: 'SEO', href: '#', initial: 'S', current: false },
     { id: 2, name: 'Реклама', href: '#', initial: 'Р', current: false },
-    { id: 3, name: 'Статистика', href: '#', initial: 'W', current: false },
+    { id: 3, name: 'Статистика', href: '#', initial: 'С', current: false },
 ]
 
 function classNames(...classes) {
@@ -98,8 +106,6 @@ function classNames(...classes) {
 
 export default function Example() {
     const { currentVisibleBar, closeVisibleBar } = visibleBar()
-
-    const [open, setOpen] = useState(true)
 
     return (
         <Transition.Root show={currentVisibleBar} as={Fragment}>
@@ -122,7 +128,7 @@ export default function Example() {
                                 leaveFrom="translate-x-0"
                                 leaveTo="-translate-x-full"
                             >
-                                <Dialog.Panel className="pointer-events-auto w-screen max-w-sm">
+                                <Dialog.Panel className="pointer-events-auto w-screen max-w-xs">
                                     <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                                         <div className="bg-gray-800 px-4 py-4 sm:px-6">
                                             <div className="flex items-center justify-between">
@@ -195,7 +201,7 @@ export default function Example() {
                                                                                         item.current
                                                                                             ? 'bg-gray-50'
                                                                                             : 'hover:bg-gray-50',
-                                                                                        'group flex gap-x-3 rounded-md p-2 text-base leading-6 font-bold text-gray-700',
+                                                                                        'group flex gap-x-3 rounded-md p-2 text-base leading-6 font-semibold text-gray-700',
                                                                                     )}
                                                                                 >
 
@@ -300,16 +306,16 @@ export default function Example() {
                                                                 href={team.href}
                                                                 className={classNames(
                                                                     team.current
-                                                                        ? 'bg-gray-50 text-indigo-600'
-                                                                        : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50',
+                                                                        ? 'bg-gray-50 text-gray-600'
+                                                                        : 'text-gray-700 hover:text-gray-600 hover:bg-gray-50',
                                                                     'group flex gap-x-3 rounded-md py-2 text-base leading-6 font-semibold',
                                                                 )}
                                                             >
                                                                 <span
                                                                     className={classNames(
                                                                         team.current
-                                                                            ? 'text-indigo-600 border-indigo-600'
-                                                                            : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600',
+                                                                            ? 'text-gray-600 border-gray-600'
+                                                                            : 'text-gray-400 border-gray-200 group-hover:border-gray-600 group-hover:text-gray-600',
                                                                         'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white',
                                                                     )}
                                                                 >
@@ -329,18 +335,18 @@ export default function Example() {
                                             </nav>
 
                                         </div>
-                                        <div className="mt-auto px-6">
-                                                    <Link
-                                                        href="/settings"
-                                                        className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
-                                                    >
-                                                        <Cog6ToothIcon
-                                                            className="h-6 w-6 shrink-0 text-gray-400 group-hover:text-indigo-600"
-                                                            aria-hidden="true"
-                                                        />
-                                                        Настройки
-                                                    </Link>
-                                                </div>
+                                        <div className="mt-auto p-6">
+                                            <Link
+                                                href="/settings"
+                                                className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-gray-600"
+                                            >
+                                                <Cog6ToothIcon
+                                                    className="h-6 w-6 shrink-0 text-gray-400 group-hover:text-gray-600"
+                                                    aria-hidden="true"
+                                                />
+                                                Настройки
+                                            </Link>
+                                        </div>
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>
