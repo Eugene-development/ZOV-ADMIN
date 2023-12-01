@@ -33,11 +33,10 @@ export default ({ data, allRubric }) => {
                 <div className="sm:flex sm:items-center">
                     <div className="sm:flex-auto">
                         <h1 className="text-xl font-semibold text-gray-900">
-                            Раздел "Категория"
+                            Страница "Категория"
                         </h1>
                         <p className="mt-2 text-sm text-gray-700">
-                            При изменении статуса элемента в неактивное
-                            положение, данные не будут отображаться на сайте.
+                            Страница динамическая
                         </p>
                     </div>
                     <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">

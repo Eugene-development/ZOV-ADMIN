@@ -7,30 +7,43 @@ import { v4 as uuidv4 } from 'uuid'
 const CATEGORIES = gql`
     query category {
         category(orderBy: [{ column: VALUE, order: ASC }]) {
+            ...body
+            ...SEO
+            ...parent
+            ...children
+        }
+    }
+
+    fragment body on Category {
+        id
+        value
+        slug
+        key
+        created_at
+        updated_at
+    }
+    fragment SEO on Category {
+        seoTitle {
             id
             value
-            slug
-            key
-            created_at
-            updated_at
-            seoTitle {
+        }
+        seoDescription {
+            id
+            value
+        }
+    }
+    fragment parent on Category {
+        parent: parentable {
+            ... on Rubric {
                 id
                 value
             }
-            seoDescription {
-                id
-                value
-            }
-            parent: parentable {
-                ... on Rubric {
-                    id
-                    value
-                }
-            }
-            product {
-                id
-                value
-            }
+        }
+    }
+    fragment children on Category {
+        product {
+            id
+            value
         }
     }
 `

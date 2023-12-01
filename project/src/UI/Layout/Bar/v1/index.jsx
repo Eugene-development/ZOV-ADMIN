@@ -11,19 +11,32 @@ import {
     HomeIcon,
     UsersIcon,
     XMarkIcon,
+    Cog6ToothIcon,
 } from '@heroicons/react/24/outline'
 
 import { useBarStore } from '@/store/bar'
 const { visibleBar } = useBarStore
 
 const navigation = [
-    { name: 'Главная', href: '/dashboard', icon: HomeIcon, current: true },
+    { name: 'Дашборд', href: '/dashboard', icon: ChartPieIcon, current: true },
     {
-        name: 'Команда',
+        name: 'Главная страница',
+        href: '/main',
+        icon: HomeIcon,
+        current: false,
+        children: [
+            { name: 'Список постов', href: '#' },
+            { name: 'Human Resources', href: '#' },
+            { name: 'Customer Success', href: '#' },
+        ],
+    },
+
+    {
+        name: 'Блог',
         icon: UsersIcon,
         current: false,
         children: [
-            { name: 'Engineering', href: '#' },
+            { name: 'Список постов', href: '#' },
             { name: 'Human Resources', href: '#' },
             { name: 'Customer Success', href: '#' },
         ],
@@ -33,19 +46,50 @@ const navigation = [
         icon: FolderIcon,
         current: false,
         children: [
-            { name: 'Меню', href: '/menu' },
+            // { name: 'Меню', href: '/menu' },
             { name: 'Рубрика', href: '/rubrics' },
             { name: 'Категория', href: '/categories' },
             { name: 'Продукт', href: '/products' },
         ],
     },
     {
-        name: 'Блог',
-        href: '/blog',
+        name: 'Сервис',
+        href: '/#',
         icon: DocumentDuplicateIcon,
         current: false,
+        children: [
+            { name: 'Список постов', href: '#' },
+            { name: 'Human Resources', href: '#' },
+            { name: 'Customer Success', href: '#' },
+        ],
     },
-    { name: 'СЕО', href: '/seo', icon: ChartPieIcon, current: false },
+    {
+        name: 'Акции',
+        href: '/#',
+        icon: DocumentDuplicateIcon,
+        current: false,
+        children: [
+            { name: 'Список постов', href: '#' },
+            { name: 'Human Resources', href: '#' },
+            { name: 'Customer Success', href: '#' },
+        ],
+    },
+    {
+        name: 'Контакты',
+        href: '/',
+        icon: UsersIcon,
+        current: false,
+        children: [
+            { name: 'Список постов', href: '#' },
+            { name: 'Human Resources', href: '#' },
+            { name: 'Customer Success', href: '#' },
+        ],
+    },
+]
+const teams = [
+    { id: 1, name: 'СЕО', href: '#', initial: 'С', current: false },
+    { id: 2, name: 'Реклама', href: '#', initial: 'Р', current: false },
+    { id: 3, name: 'Статистика', href: '#', initial: 'W', current: false },
 ]
 
 function classNames(...classes) {
@@ -80,11 +124,13 @@ export default function Example() {
                             >
                                 <Dialog.Panel className="pointer-events-auto w-screen max-w-sm">
                                     <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
-                                        <div className="bg-gray-800 px-4 py-6 sm:px-6">
+                                        <div className="bg-gray-800 px-4 py-4 sm:px-6">
                                             <div className="flex items-center justify-between">
-                                                <Dialog.Title className="text-base font-semibold leading-6 text-white">
-                                                    Проект "ЗОВ"
-                                                </Dialog.Title>
+                                                    <img
+                                                        className="h-10"
+                                                        src="https://zovrus.ru/design/zovrus/images/dist/svg/logo-white.svg"
+                                                        alt="Белорусская абрика мебели 'ЗОВ'"
+                                                    />
                                                 <div className="ml-3 flex h-7 items-center">
                                                     <button
                                                         type="button"
@@ -115,6 +161,9 @@ export default function Example() {
                                         </div>
                                         <div className="relative flex-1 px-4 py-6 sm:px-6">
                                             <nav className="flex flex-1 flex-col">
+                                                <div className="py-6 text-2xl font-bold tracking-wide leading-6 text-gray-700">
+                                                    Сайт
+                                                </div>
                                                 <ul
                                                     role="list"
                                                     className="flex flex-1 flex-col gap-y-7"
@@ -146,9 +195,10 @@ export default function Example() {
                                                                                         item.current
                                                                                             ? 'bg-gray-50'
                                                                                             : 'hover:bg-gray-50',
-                                                                                        'group flex gap-x-3 rounded-md p-2 text-base leading-6 font-semibold text-gray-700',
+                                                                                        'group flex gap-x-3 rounded-md p-2 text-base leading-6 font-bold text-gray-700',
                                                                                     )}
                                                                                 >
+
                                                                                     <item.icon
                                                                                         className="h-6 w-6 shrink-0 text-gray-400"
                                                                                         aria-hidden="true"
@@ -237,8 +287,60 @@ export default function Example() {
                                                         </ul>
                                                     </li>
                                                 </ul>
+                                                <div className="mt-6 py-4 text-2xl font-bold tracking-wide leading-6 text-gray-700">
+                                                    Аналитика
+                                                </div>
+                                                <ul
+                                                    role="list"
+                                                    className=" mt-2 space-y-1"
+                                                >
+                                                    {teams.map(team => (
+                                                        <li key={team.name}>
+                                                            <a
+                                                                href={team.href}
+                                                                className={classNames(
+                                                                    team.current
+                                                                        ? 'bg-gray-50 text-indigo-600'
+                                                                        : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50',
+                                                                    'group flex gap-x-3 rounded-md py-2 text-base leading-6 font-semibold',
+                                                                )}
+                                                            >
+                                                                <span
+                                                                    className={classNames(
+                                                                        team.current
+                                                                            ? 'text-indigo-600 border-indigo-600'
+                                                                            : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600',
+                                                                        'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white',
+                                                                    )}
+                                                                >
+                                                                    {
+                                                                        team.initial
+                                                                    }
+                                                                </span>
+                                                                <span className="truncate">
+                                                                    {team.name}
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+
+
                                             </nav>
+
                                         </div>
+                                        <div className="mt-auto px-6">
+                                                    <Link
+                                                        href="/settings"
+                                                        className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+                                                    >
+                                                        <Cog6ToothIcon
+                                                            className="h-6 w-6 shrink-0 text-gray-400 group-hover:text-indigo-600"
+                                                            aria-hidden="true"
+                                                        />
+                                                        Настройки
+                                                    </Link>
+                                                </div>
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>

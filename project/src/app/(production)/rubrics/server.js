@@ -3,14 +3,44 @@ import { v4 as uuidv4 } from 'uuid'
 
 const RUBRICS = gql`
     query rubric {
-        rubric {
+        rubric(orderBy: [{ column: VALUE, order: ASC }]) {
+            ...body
+            ...SEO
+            ...parent
+            ...children
+        }
+    }
+
+    fragment body on Rubric {
+        id
+        value
+        slug
+        key
+        created_at
+        updated_at
+    }
+    fragment SEO on Rubric {
+        seoTitle {
             id
             value
-            key
-            category {
+        }
+        seoDescription {
+            id
+            value
+        }
+    }
+    fragment parent on Rubric {
+        parent: parentable {
+            ... on Menu {
                 id
                 value
             }
+        }
+    }
+    fragment children on Rubric {
+        category {
+            id
+            value
         }
     }
 `
