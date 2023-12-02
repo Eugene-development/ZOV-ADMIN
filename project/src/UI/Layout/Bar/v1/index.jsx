@@ -5,14 +5,14 @@ import { Dialog, Transition, Disclosure } from '@headlessui/react'
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
 import {
     FireIcon,
-    ChartPieIcon,
+    FlagIcon,
     WrenchScrewdriverIcon,
     FolderIcon,
     HomeIcon,
     UsersIcon,
     XMarkIcon,
     Cog6ToothIcon,
-    HandThumbUpIcon
+    HandThumbUpIcon,
 } from '@heroicons/react/24/outline'
 
 import { useBarStore } from '@/store/bar'
@@ -34,7 +34,7 @@ const navigation = [
     {
         name: 'Компания',
         href: '/company',
-        icon: HomeIcon,
+        icon: FlagIcon,
         current: false,
         children: [
             { name: 'хххх', href: '#' },
@@ -69,18 +69,14 @@ const navigation = [
         href: '/#',
         icon: WrenchScrewdriverIcon,
         current: false,
-        children: [
-            { name: 'Список', href: '#' },
-        ],
+        children: [{ name: 'Список', href: '#' }],
     },
     {
         name: 'Акции',
         href: '/#',
         icon: FireIcon,
         current: false,
-        children: [
-            { name: 'Список', href: '#' },
-        ],
+        children: [{ name: 'Список', href: '#' }],
     },
     {
         name: 'Салоны',
@@ -94,7 +90,7 @@ const navigation = [
         ],
     },
 ]
-const teams = [
+const analytics = [
     { id: 1, name: 'SEO', href: '#', initial: 'S', current: false },
     { id: 2, name: 'Реклама', href: '#', initial: 'Р', current: false },
     { id: 3, name: 'Статистика', href: '#', initial: 'С', current: false },
@@ -104,7 +100,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default () => {
     const { currentVisibleBar, closeVisibleBar } = visibleBar()
 
     return (
@@ -132,11 +128,11 @@ export default function Example() {
                                     <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                                         <div className="bg-gray-800 px-4 py-4 sm:px-6">
                                             <div className="flex items-center justify-between">
-                                                    <img
-                                                        className="h-10"
-                                                        src="https://zovrus.ru/design/zovrus/images/dist/svg/logo-white.svg"
-                                                        alt="Белорусская абрика мебели 'ЗОВ'"
-                                                    />
+                                                <img
+                                                    className="h-10"
+                                                    src="https://zovrus.ru/design/zovrus/images/dist/svg/logo-white.svg"
+                                                    alt="Белорусская абрика мебели 'ЗОВ'"
+                                                />
                                                 <div className="ml-3 flex h-7 items-center">
                                                     <button
                                                         type="button"
@@ -204,7 +200,6 @@ export default function Example() {
                                                                                         'group flex gap-x-3 rounded-md p-2 text-base leading-6 font-semibold text-gray-700',
                                                                                     )}
                                                                                 >
-
                                                                                     <item.icon
                                                                                         className="h-6 w-6 shrink-0 text-gray-400"
                                                                                         aria-hidden="true"
@@ -300,7 +295,7 @@ export default function Example() {
                                                     role="list"
                                                     className=" mt-2 space-y-1"
                                                 >
-                                                    {teams.map(team => (
+                                                    {analytics.map(team => (
                                                         <li key={team.name}>
                                                             <a
                                                                 href={team.href}
@@ -330,10 +325,7 @@ export default function Example() {
                                                         </li>
                                                     ))}
                                                 </ul>
-
-
                                             </nav>
-
                                         </div>
                                         <div className="mt-auto p-6">
                                             <Link

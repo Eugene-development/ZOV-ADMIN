@@ -89,8 +89,6 @@ export default function index() {
                                             </span>
                                         </div>
 
-
-
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
                                                 SEO Title:{' '}
@@ -109,7 +107,6 @@ export default function index() {
                                                 }
                                             </span>
                                         </div>
-
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
                                                 Запись создана:{' '}
@@ -130,7 +127,6 @@ export default function index() {
                                                     : 'Не указано'}
                                             </span>
                                         </div>
-
                                     </div>
                                 </div>
 
