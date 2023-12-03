@@ -1,6 +1,10 @@
 'use client'
 import Toggle from './Toggle'
 import ModalRead from './Modal/Read'
+import ModalCreate from './Modal/Create'
+import ModalUpdate from './Modal/Update'
+import ModalDelete from './Modal/Delete'
+
 
 import { useRubricStore } from '@/store/rubric'
 const { visibleReadRubricModal } = useRubricStore
@@ -15,6 +19,10 @@ export default ({ data }) => {
     return (
         <>
             <ModalRead />
+            <ModalCreate />
+            <ModalUpdate />
+            <ModalDelete />
+
             <div className="mt-4 p-4 sm:p-6 lg:p-8">
                 <div className="sm:flex sm:items-center">
                     <div className="sm:flex-auto">

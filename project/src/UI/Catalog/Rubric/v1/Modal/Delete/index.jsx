@@ -3,24 +3,24 @@ import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
-import { useCategoryStore } from '@/store/category'
-const { visibleDeleteCategoryModal } = useCategoryStore
+import { useRubricStore } from '@/store/rubric'
+const { visibleDeleteRubricModal } = useRubricStore
 
 import FormDelete from './FormDelete'
 
 export default () => {
     const {
-        currentVisibleDeleteCategoryModal,
-        closeVisibleDeleteCategoryModal,
-        currentDeleteCategory,
-    } = visibleDeleteCategoryModal()
+        currentVisibleDeleteRubricModal,
+        closeVisibleDeleteRubricModal,
+        currentDeleteRubric,
+    } = visibleDeleteRubricModal()
 
     return (
-        <Transition.Root show={currentVisibleDeleteCategoryModal} as={Fragment}>
+        <Transition.Root show={currentVisibleDeleteRubricModal} as={Fragment}>
             <Dialog
                 as="div"
                 className="relative z-10"
-                onClose={() => closeVisibleDeleteCategoryModal()}
+                onClose={() => closeVisibleDeleteRubricModal()}
             >
                 <Transition.Child
                     as={Fragment}
@@ -65,7 +65,7 @@ export default () => {
                                                 Категория "
                                                 <strong>
                                                     {
-                                                        currentDeleteCategory.value
+                                                        currentDeleteRubric.value
                                                     }
                                                 </strong>
                                                 " будет удалёна из базы данных.
@@ -79,18 +79,18 @@ export default () => {
                                 <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                                     <div
                                         onClick={() =>
-                                            closeVisibleDeleteCategoryModal()
+                                            closeVisibleDeleteRubricModal()
                                         }
                                     >
                                         <FormDelete
-                                            id={currentDeleteCategory.id}
+                                            id={currentDeleteRubric.id}
                                         />
                                     </div>
                                     <button
                                         type="button"
                                         className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm"
                                         onClick={() =>
-                                            closeVisibleDeleteCategoryModal()
+                                            closeVisibleDeleteRubricModal()
                                         }
                                         // ref={cancelButtonRef}
                                     >
