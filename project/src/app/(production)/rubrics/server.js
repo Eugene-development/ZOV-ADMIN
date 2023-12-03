@@ -56,3 +56,24 @@ export async function getRubrics() {
 
     return await request(url, RUBRICS, variables, requestHeaders)
 }
+
+const DELETE_RUBRIC = gql`
+    mutation delete_rubric($id: UUID!) {
+        deleteRubric(id: $id) {
+            value
+        }
+    }
+`
+
+export async function deleteRubric({ id }) {
+    const url = process.env.NEXT_PUBLIC_GRAPHQL
+    const variables = {
+        id,
+    }
+    const requestHeaders = {
+        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
+    }
+
+    await request(url, DELETE_RUBRIC, variables, requestHeaders)
+    revalidatePath('/rubrics')
+}

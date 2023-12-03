@@ -7,7 +7,12 @@ import ModalDelete from './Modal/Delete'
 
 
 import { useRubricStore } from '@/store/rubric'
-const { visibleReadRubricModal } = useRubricStore
+const {
+    visibleReadRubricModal,
+    visibleCreateRubricModal,
+    visibleUpdateRubricModal,
+    visibleDeleteRubricModal,
+} = useRubricStore
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -15,6 +20,9 @@ function classNames(...classes) {
 
 export default ({ data }) => {
     const { openVisibleReadRubricModal } = visibleReadRubricModal()
+    const { openVisibleCreateRubricModal } = visibleCreateRubricModal()
+    const { openVisibleUpdateRubricModal } = visibleUpdateRubricModal()
+    const { openVisibleDeleteRubricModal } = visibleDeleteRubricModal()
 
     return (
         <>
@@ -36,6 +44,9 @@ export default ({ data }) => {
                     </div>
                     <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
                         <button
+                            onClick={() => {
+                                openVisibleCreateRubricModal()
+                            }}
                             type="button"
                             className="inline-flex items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:w-auto"
                         >
@@ -223,14 +234,12 @@ export default ({ data }) => {
                                                         </svg>
                                                     </button>
                                                     <button
-                                                        // onClick={() => {
-                                                        //     is_visible_update_rubric(true)
-                                                        //     current_id_rubric(item.id)
-                                                        //     current_value_rubric(item.value)
-                                                        //     current_parent_value_rubric(item.parent.value)
-                                                        //     current_parent_id_rubric(item.parent.id)
-                                                        //     }
-                                                        // }
+                                                        onClick={() => {
+                                                            openVisibleUpdateRubricModal(
+                                                                item,
+
+                                                            )
+                                                        }}
                                                         type="button"
                                                         className="mx-2 inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-500 bg-blue-50 hover:bg-blue-200 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-blue-200 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                     >
@@ -248,12 +257,11 @@ export default ({ data }) => {
                                                         </svg>
                                                     </button>
                                                     <button
-                                                        // onClick={() => {
-                                                        //     is_visible_delete_rubric(true)
-                                                        //     current_value_rubric(item.value)
-                                                        //     current_id_rubric(item.id)
-                                                        //     }
-                                                        // }
+                                                        onClick={() => {
+                                                            openVisibleDeleteRubricModal(
+                                                                item,
+                                                            )
+                                                        }}
                                                         type="button"
                                                         className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-red-500 bg-red-50 hover:bg-red-200 focus:outline-none focus:border-red-300 focus:shadow-outline-red active:bg-red-200 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                     >
