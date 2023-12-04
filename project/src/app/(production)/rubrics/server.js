@@ -1,3 +1,5 @@
+'use server'
+import { revalidatePath } from 'next/cache'
 import { gql, request } from 'graphql-request'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -70,10 +72,10 @@ export async function deleteRubric({ id }) {
     const variables = {
         id,
     }
-    const requestHeaders = {
-        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
-    }
+    // const requestHeaders = {
+    //     ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
+    // }
 
-    await request(url, DELETE_RUBRIC, variables, requestHeaders)
+    await request(url, DELETE_RUBRIC, variables)
     revalidatePath('/rubrics')
 }
