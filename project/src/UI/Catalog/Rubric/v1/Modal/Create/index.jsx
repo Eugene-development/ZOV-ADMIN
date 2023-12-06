@@ -100,7 +100,7 @@ export default () => {
                                                 as="h3"
                                                 className="text-lg font-medium leading-6 text-gray-900"
                                             >
-                                                Добавление элемента каталога
+                                                Добавление рубрики
                                             </Dialog.Title>
                                             <div className="hidden md:block mt-2">
                                                 <p className="text-sm text-gray-500">
