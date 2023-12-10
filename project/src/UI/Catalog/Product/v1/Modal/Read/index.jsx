@@ -92,16 +92,46 @@ export default function index() {
                                             </span>
                                         </div>
 
-                                        <div className="">
+                                                                                <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
-                                                {/* Запись создана - {currentCreatedReadProduct ? new Date(currentCreatedReadProduct).toLocaleDateString("ru") : "Не указано"} */}
+                                                SEO Title:{' '}
+                                                {
+                                                    currentReadProduct.seoTitle
+                                                        ?.value
+                                                }
                                             </span>
                                         </div>
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
-                                                {/* Последнее изменение - {currentCreatedReadProduct ? new Date(currentUpdatedReadProduct).toLocaleDateString("ru") : "Не указано"} */}
+                                                SEO Description:{' '}
+                                                {
+                                                    currentReadProduct
+                                                        .seoDescription?.value
+                                                }
                                             </span>
                                         </div>
+
+                                        <div className="">
+                                            <span className="block text-sm font-medium text-gray-700">
+                                                Запись создана:{' '}
+                                                {currentReadProduct.created_at
+                                                    ? new Date(
+                                                          currentReadProduct.created_at,
+                                                      ).toLocaleDateString('ru')
+                                                    : 'Не указано'}
+                                            </span>
+                                        </div>
+                                        <div className="">
+                                            <span className="block text-sm font-medium text-gray-700">
+                                                Последнее изменение:{' '}
+                                                {currentReadProduct.updated_at
+                                                    ? new Date(
+                                                          currentReadProduct.updated_at,
+                                                      ).toLocaleDateString('ru')
+                                                    : 'Не указано'}
+                                            </span>
+                                        </div>
+
                                     </div>
                                 </div>
 

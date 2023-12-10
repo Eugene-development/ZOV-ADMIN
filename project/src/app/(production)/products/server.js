@@ -45,13 +45,19 @@ const PRODUCTS = gql`
 `
 
 export async function getProducts() {
-    const url = process.env.NEXT_PUBLIC_GRAPHQL
+    const {
+        NEXT_PUBLIC_GRAPHQL,
+        NEXT_PUBLIC_KEY,
+        NEXT_PUBLIC_CONNECTION_NAME,
+    } = process.env
+
     const variables = {
-        key: process.env.NEXT_PUBLIC_KEY,
-    }
-    const requestHeaders = {
-        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
+        key: NEXT_PUBLIC_KEY,
     }
 
-    return await request(url, PRODUCTS, variables, requestHeaders)
+    const requestHeaders = {
+        ConnectionName: NEXT_PUBLIC_CONNECTION_NAME,
+    }
+
+    return request(NEXT_PUBLIC_GRAPHQL, PRODUCTS, variables, requestHeaders)
 }
