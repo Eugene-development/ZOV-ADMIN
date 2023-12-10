@@ -84,8 +84,11 @@ export default function index() {
 
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
-                                                Принадлежит элементу меню -
-                                                {/* "{currentParentValueReadProduct}" */}
+                                                Принадлежит категории -
+                                                {
+                                                    currentReadProduct.parent
+                                                        ?.value
+                                                }
                                             </span>
                                         </div>
 

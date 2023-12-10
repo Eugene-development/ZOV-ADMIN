@@ -3,10 +3,44 @@ import { v4 as uuidv4 } from 'uuid'
 
 const PRODUCTS = gql`
     query product {
-        product {
+        product(orderBy: [{ column: CREATED_AT, order: DESC }]) {
+            ...body
+            ...SEO
+            ...parent
+            ...children
+        }
+    }
+    fragment body on Product {
+        id
+        value
+        slug
+        key
+        created_at
+        updated_at
+    }
+    fragment SEO on Product {
+        seoTitle {
             id
             value
-            key
+        }
+        seoDescription {
+            id
+            value
+        }
+    }
+
+    fragment parent on Product {
+        parent: parentable {
+            ... on Category {
+                id
+                value
+            }
+        }
+    }
+    fragment children on Product {
+        unit {
+            id
+            value
         }
     }
 `
