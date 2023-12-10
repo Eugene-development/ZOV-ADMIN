@@ -28,7 +28,6 @@ const PRODUCTS = gql`
             value
         }
     }
-
     fragment parent on Product {
         parent: parentable {
             ... on Category {
