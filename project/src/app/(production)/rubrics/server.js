@@ -3,6 +3,13 @@ import { revalidatePath } from 'next/cache'
 import { gql, request } from 'graphql-request'
 import { v4 as uuidv4 } from 'uuid'
 
+const { NEXT_PUBLIC_GRAPHQL, NEXT_PUBLIC_KEY, NEXT_PUBLIC_CONNECTION_NAME } =
+    process.env
+
+const requestHeaders = {
+    ConnectionName: NEXT_PUBLIC_CONNECTION_NAME,
+}
+
 const RUBRICS = gql`
     query rubric {
         rubric(orderBy: [{ column: VALUE, order: ASC }]) {
@@ -46,17 +53,17 @@ const RUBRICS = gql`
         }
     }
 `
-
 export async function getRubrics() {
-    const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
-        key: process.env.NEXT_PUBLIC_KEY,
-    }
-    const requestHeaders = {
-        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
+        key: NEXT_PUBLIC_KEY,
     }
 
-    return await request(url, RUBRICS, variables, requestHeaders)
+    return await request(
+        NEXT_PUBLIC_GRAPHQL,
+        RUBRICS,
+        variables,
+        requestHeaders,
+    )
 }
 
 const CREATE_RUBRIC = gql`
@@ -91,28 +98,24 @@ const CREATE_RUBRIC = gql`
 `
 
 export async function createRubric(data) {
-    const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
         id: uuidv4(),
-        key: process.env.NEXT_PUBLIC_KEY,
+        key: NEXT_PUBLIC_KEY,
         is_active: true,
         value: data.text,
         slug: data.slug,
         // parentableType: 'menu',
         // parentableId: data.selectedParent,
         createSeoTitle: {
-            key: process.env.NEXT_PUBLIC_KEY,
+            key: NEXT_PUBLIC_KEY,
             value: data.title,
         },
         createSeoDescription: {
-            key: process.env.NEXT_PUBLIC_KEY,
+            key: NEXT_PUBLIC_KEY,
             value: data.description,
         },
     }
-    const requestHeaders = {
-        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
-    }
-    await request(url, CREATE_RUBRIC, variables, requestHeaders)
+    await request(NEXT_PUBLIC_GRAPHQL, CREATE_RUBRIC, variables, requestHeaders)
     revalidatePath('/rubrics')
 }
 
@@ -147,10 +150,9 @@ const UPDATE_RUBRIC = gql`
 `
 
 export async function updateRubric(data) {
-    const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
         id: data.id,
-        key: process.env.NEXT_PUBLIC_KEY,
+        key: NEXT_PUBLIC_KEY,
         is_active: true,
         value: data.text,
         slug: data.slug,
@@ -158,20 +160,20 @@ export async function updateRubric(data) {
         // parentableId: data.selectedParent,
         updateSeoTitle: {
             id: data.idTitle,
-            key: process.env.NEXT_PUBLIC_KEY,
+            key: NEXT_PUBLIC_KEY,
             value: data.title,
         },
         updateSeoDescription: {
             id: data.idDescription,
-            key: process.env.NEXT_PUBLIC_KEY,
+            key: NEXT_PUBLIC_KEY,
             value: data.description,
         },
     }
     const requestHeaders = {
-        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
+        ConnectionName: NEXT_PUBLIC_CONNECTION_NAME,
     }
 
-    await request(url, UPDATE_RUBRIC, variables, requestHeaders)
+    await request(NEXT_PUBLIC_GRAPHQL, UPDATE_RUBRIC, variables, requestHeaders)
     revalidatePath('/rubrics')
 }
 
@@ -184,14 +186,10 @@ const DELETE_RUBRIC = gql`
 `
 
 export async function deleteRubric({ id }) {
-    const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
         id,
     }
-    // const requestHeaders = {
-    //     ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
-    // }
 
-    await request(url, DELETE_RUBRIC, variables)
+    await request(NEXT_PUBLIC_GRAPHQL, DELETE_RUBRIC, variables)
     revalidatePath('/rubrics')
 }

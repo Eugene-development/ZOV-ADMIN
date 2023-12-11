@@ -66,7 +66,7 @@ export async function getCategory() {
         key: NEXT_PUBLIC_KEY,
     }
     try {
-        return request(
+        return await request(
             NEXT_PUBLIC_GRAPHQL,
             CATEGORIES,
             variables,
