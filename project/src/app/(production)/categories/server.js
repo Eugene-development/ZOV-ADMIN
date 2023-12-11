@@ -79,15 +79,16 @@ export async function getCategory() {
 }
 
 export async function getAllRubric() {
-    const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
-        key: process.env.NEXT_PUBLIC_KEY,
-    }
-    const requestHeaders = {
-        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
+        key: NEXT_PUBLIC_KEY,
     }
 
-    return await request(url, ALL_RUBRICS, variables, requestHeaders)
+    return await request(
+        NEXT_PUBLIC_GRAPHQL,
+        ALL_RUBRICS,
+        variables,
+        requestHeaders,
+    )
 }
 
 const CREATE_CATEGORY = gql`
@@ -122,26 +123,29 @@ const CREATE_CATEGORY = gql`
 `
 
 export async function createCategory(data) {
-    const url = process.env.NEXT_PUBLIC_GRAPHQL
-
     const variables = {
         id: uuidv4(),
-        key: process.env.NEXT_PUBLIC_KEY,
+        key: NEXT_PUBLIC_KEY,
         is_active: true,
         value: data.text,
         slug: data.slug,
         parentableType: 'rubric',
         parentableId: data.selectedParent,
         createSeoTitle: {
-            key: process.env.NEXT_PUBLIC_KEY,
+            key: NEXT_PUBLIC_KEY,
             value: data.title,
         },
         createSeoDescription: {
-            key: process.env.NEXT_PUBLIC_KEY,
+            key: NEXT_PUBLIC_KEY,
             value: data.description,
         },
     }
-    await request(url, CREATE_CATEGORY, variables, requestHeaders)
+    await request(
+        NEXT_PUBLIC_GRAPHQL,
+        CREATE_CATEGORY,
+        variables,
+        requestHeaders,
+    )
     revalidatePath('/categories')
 }
 
@@ -176,10 +180,9 @@ const UPDATE_CATEGORY = gql`
 `
 
 export async function updateCategory(data) {
-    const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
         id: data.id,
-        key: process.env.NEXT_PUBLIC_KEY,
+        key: NEXT_PUBLIC_KEY,
         is_active: true,
         value: data.text,
         slug: data.slug,
@@ -187,20 +190,22 @@ export async function updateCategory(data) {
         parentableId: data.selectedParent,
         updateSeoTitle: {
             id: data.idTitle,
-            key: process.env.NEXT_PUBLIC_KEY,
+            key: NEXT_PUBLIC_KEY,
             value: data.title,
         },
         updateSeoDescription: {
             id: data.idDescription,
-            key: process.env.NEXT_PUBLIC_KEY,
+            key: NEXT_PUBLIC_KEY,
             value: data.description,
         },
     }
-    const requestHeaders = {
-        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
-    }
 
-    await request(url, UPDATE_CATEGORY, variables, requestHeaders)
+    await request(
+        NEXT_PUBLIC_GRAPHQL,
+        UPDATE_CATEGORY,
+        variables,
+        requestHeaders,
+    )
     revalidatePath('/categories')
 }
 
@@ -213,14 +218,15 @@ const DELETE_CATEGORY = gql`
 `
 
 export async function deleteCategory({ id }) {
-    const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
         id,
     }
-    const requestHeaders = {
-        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
-    }
 
-    await request(url, DELETE_CATEGORY, variables, requestHeaders)
+    await request(
+        NEXT_PUBLIC_GRAPHQL,
+        DELETE_CATEGORY,
+        variables,
+        requestHeaders,
+    )
     revalidatePath('/categories')
 }
