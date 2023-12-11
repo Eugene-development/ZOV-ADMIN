@@ -2,7 +2,13 @@
 import { revalidatePath } from 'next/cache'
 import { gql, request } from 'graphql-request'
 import { v4 as uuidv4 } from 'uuid'
-// import sortBy from 'lodash/sortBy'
+
+const { NEXT_PUBLIC_GRAPHQL, NEXT_PUBLIC_KEY, NEXT_PUBLIC_CONNECTION_NAME } =
+    process.env
+
+const requestHeaders = {
+    ConnectionName: NEXT_PUBLIC_CONNECTION_NAME,
+}
 
 const CATEGORIES = gql`
     query category {
@@ -55,17 +61,21 @@ const ALL_RUBRICS = gql`
         }
     }
 `
-
 export async function getCategory() {
-    const url = process.env.NEXT_PUBLIC_GRAPHQL
     const variables = {
-        key: process.env.NEXT_PUBLIC_KEY,
+        key: NEXT_PUBLIC_KEY,
     }
-    const requestHeaders = {
-        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
+    try {
+        return request(
+            NEXT_PUBLIC_GRAPHQL,
+            CATEGORIES,
+            variables,
+            requestHeaders,
+        )
+    } catch (error) {
+        console.error('Error occurred while fetching category:', error)
+        throw error
     }
-
-    return await request(url, CATEGORIES, variables, requestHeaders)
 }
 
 export async function getAllRubric() {
@@ -113,6 +123,7 @@ const CREATE_CATEGORY = gql`
 
 export async function createCategory(data) {
     const url = process.env.NEXT_PUBLIC_GRAPHQL
+
     const variables = {
         id: uuidv4(),
         key: process.env.NEXT_PUBLIC_KEY,
@@ -129,9 +140,6 @@ export async function createCategory(data) {
             key: process.env.NEXT_PUBLIC_KEY,
             value: data.description,
         },
-    }
-    const requestHeaders = {
-        ConnectionName: process.env.NEXT_PUBLIC_CONNECTION_NAME,
     }
     await request(url, CREATE_CATEGORY, variables, requestHeaders)
     revalidatePath('/categories')
