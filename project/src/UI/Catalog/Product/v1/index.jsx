@@ -1,9 +1,15 @@
 'use client'
 import Toggle from './Toggle'
 import ModalRead from './Modal/Read'
+// import ModalCreate from './Modal/Create'
+// import ModalUpdate from './Modal/Update'
+import ModalDelete from './Modal/Delete'
 
 import { useProductStore } from '@/store/product'
-const { visibleReadProductModal } = useProductStore
+const { visibleReadProductModal,
+    visibleCreateProductModal,
+    visibleUpdateProductModal,
+    visibleDeleteProductModal, } = useProductStore
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -11,10 +17,16 @@ function classNames(...classes) {
 
 export default ({ data }) => {
     const { openVisibleReadProductModal } = visibleReadProductModal()
+    const { openVisibleCreateProductModal } = visibleCreateProductModal()
+    const { openVisibleUpdateProductModal } = visibleUpdateProductModal()
+    const { openVisibleDeleteProductModal } = visibleDeleteProductModal()
 
     return (
         <>
             <ModalRead />
+            {/* <ModalCreate />
+            <ModalUpdate /> */}
+            <ModalDelete />
             <div className="mt-4 p-4 sm:p-6 lg:p-8">
                 <div className="sm:flex sm:items-center">
                     <div className="sm:flex-auto">
@@ -161,12 +173,12 @@ export default ({ data }) => {
                                                         type="checkbox"
                                                         className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 sm:left-6"
                                                         value={item.email}
-                                                        // checked={selectedRubric.includes(item)}
+                                                        // checked={selectedProduct.includes(item)}
                                                         // onChange={(e) =>
-                                                        //     setSelectedRubric(
+                                                        //     setSelectedProduct(
                                                         //     e.target.checked
-                                                        //         ? [...selectedRubric, item]
-                                                        //         : selectedRubric.filter((p) => p !== item)
+                                                        //         ? [...selectedProduct, item]
+                                                        //         : selectedProduct.filter((p) => p !== item)
                                                         //     )
                                                         // }
                                                     />
@@ -240,12 +252,11 @@ export default ({ data }) => {
                                                         </svg>
                                                     </button>
                                                     <button
-                                                        // onClick={() => {
-                                                        //     is_visible_delete_rubric(true)
-                                                        //     current_value_rubric(item.value)
-                                                        //     current_id_rubric(item.id)
-                                                        //     }
-                                                        // }
+                                                        onClick={() => {
+                                                            openVisibleDeleteProductModal(
+                                                                item,
+                                                            )
+                                                        }}
                                                         type="button"
                                                         className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-red-500 bg-red-50 hover:bg-red-200 focus:outline-none focus:border-red-300 focus:shadow-outline-red active:bg-red-200 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                     >

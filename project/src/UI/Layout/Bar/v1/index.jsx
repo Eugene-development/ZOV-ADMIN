@@ -289,7 +289,7 @@ export default () => {
                                                     </li>
                                                 </ul>
                                                 <div className="mt-6 py-4 text-2xl font-bold tracking-wide leading-6 text-gray-700">
-                                                    Аналитика
+                                                    Продвижение
                                                 </div>
                                                 <ul
                                                     role="list"

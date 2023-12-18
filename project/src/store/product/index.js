@@ -11,6 +11,44 @@ const visibleReadProductModal = create(set => ({
         set(() => ({ currentVisibleReadProductModal: false })),
 }))
 
+const visibleCreateProductModal = create(set => ({
+    currentVisibleCreateProductModal: false,
+    allProduct: [],
+    openVisibleCreateProductModal: allProduct => {
+        set(() => ({ allProduct }))
+        set(() => ({ currentVisibleCreateProductModal: true }))
+    },
+    closeVisibleCreateProductModal: () =>
+        set(() => ({ currentVisibleCreateProductModal: false })),
+}))
+
+const visibleUpdateProductModal = create(set => ({
+    currentVisibleUpdateProductModal: false,
+    currentUpdateProduct: [],
+    allCategory: [],
+    openVisibleUpdateProductModal: (product, allCategory) => {
+        set(() => ({ currentUpdateProduct: product }))
+        set(() => ({ allCategory }))
+        set(() => ({ currentVisibleUpdateProductModal: true }))
+    },
+    closeVisibleUpdateProductModal: () =>
+        set(() => ({ currentVisibleUpdateProductModal: false })),
+}))
+
+const visibleDeleteProductModal = create(set => ({
+    currentVisibleDeleteProductModal: false,
+    currentDeleteProduct: [],
+    openVisibleDeleteProductModal: category => {
+        set(() => ({ currentDeleteProduct: category }))
+        set(() => ({ currentVisibleDeleteProductModal: true }))
+    },
+    closeVisibleDeleteProductModal: () =>
+        set(() => ({ currentVisibleDeleteProductModal: false })),
+}))
+
 export const useProductStore = {
     visibleReadProductModal,
+    visibleCreateProductModal,
+    visibleUpdateProductModal,
+    visibleDeleteProductModal,
 }
