@@ -71,6 +71,64 @@ export async function getProducts() {
     return request(NEXT_PUBLIC_GRAPHQL, PRODUCTS, variables, requestHeaders)
 }
 
+const CREATE_PRODUCT = gql`
+    mutation create_product(
+        $id: UUID!
+        $key: UUID!
+        $is_active: Boolean
+        $value: String!
+        $slug: String!
+        $parentableType: String
+        $parentableId: UUID!
+        $createSeoTitle: CreateSeoTitleInput!
+        $createSeoDescription: CreateSeoDescriptionInput!
+    ) {
+        createProduct(
+            input: {
+                id: $id
+                key: $key
+                is_active: $is_active
+                value: $value
+                slug: $slug
+                parentable_type: $parentableType
+                parentable_id: $parentableId
+                seoTitle: { create: $createSeoTitle }
+                seoDescription: { create: $createSeoDescription }
+            }
+        ) {
+            id
+            value
+        }
+    }
+`
+
+export async function createProduct(data) {
+    const variables = {
+        id: uuidv4(),
+        key: NEXT_PUBLIC_KEY,
+        is_active: true,
+        value: data.text,
+        slug: data.slug,
+        // parentableType: 'menu',
+        // parentableId: data.selectedParent,
+        createSeoTitle: {
+            key: NEXT_PUBLIC_KEY,
+            value: data.title,
+        },
+        createSeoDescription: {
+            key: NEXT_PUBLIC_KEY,
+            value: data.description,
+        },
+    }
+    await request(
+        NEXT_PUBLIC_GRAPHQL,
+        CREATE_PRODUCT,
+        variables,
+        requestHeaders,
+    )
+    revalidatePath('/products')
+}
+
 const DELETE_PRODUCT = gql`
     mutation delete_product($id: UUID!) {
         deleteProduct(id: $id) {

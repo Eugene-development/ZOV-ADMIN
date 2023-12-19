@@ -1,7 +1,7 @@
 'use client'
 import Toggle from './Toggle'
 import ModalRead from './Modal/Read'
-// import ModalCreate from './Modal/Create'
+import ModalCreate from './Modal/Create'
 // import ModalUpdate from './Modal/Update'
 import ModalDelete from './Modal/Delete'
 
@@ -24,8 +24,8 @@ export default ({ data }) => {
     return (
         <>
             <ModalRead />
-            {/* <ModalCreate />
-            <ModalUpdate /> */}
+            <ModalCreate />
+            {/* <ModalUpdate /> */}
             <ModalDelete />
             <div className="mt-4 p-4 sm:p-6 lg:p-8">
                 <div className="sm:flex sm:items-center">
@@ -40,6 +40,9 @@ export default ({ data }) => {
                     </div>
                     <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
                         <button
+                            onClick={() => {
+                                openVisibleCreateProductModal()
+                            }}
                             type="button"
                             className="inline-flex items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:w-auto"
                         >
