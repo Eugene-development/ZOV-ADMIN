@@ -177,7 +177,6 @@ const UPDATE_PRODUCT = gql`
 `
 
 export async function updateProduct(data) {
-    // console.log(data)
     const variables = {
         id: data.id,
         key: NEXT_PUBLIC_KEY,

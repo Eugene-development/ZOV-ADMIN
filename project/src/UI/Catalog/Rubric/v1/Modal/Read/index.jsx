@@ -76,18 +76,17 @@ export default function index() {
                                     <div className="mt-6 grid grid-cols-1 gap-y-6 ">
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
-                                                Значение -{' '}
+                                                Значение:{' '}
                                                 {currentReadRubric.value}
                                                 {/* "{currentValueReadRubric}" */}
                                             </span>
                                         </div>
 
-                                        <div className="">
+                                        {/* <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
-                                                Принадлежит элементу меню -
-                                                {/* "{currentParentValueReadRubric}" */}
+                                                Принадлежит элементу меню:
                                             </span>
-                                        </div>
+                                        </div> */}
 
                                         <div className="">
                                             <span className="block text-sm font-medium text-gray-700">
