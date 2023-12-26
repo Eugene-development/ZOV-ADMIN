@@ -53,6 +53,23 @@ const PRODUCTS = gql`
     }
 `
 
+const ALL_CATEGORIES = gql`
+    query category {
+        category(orderBy: [{ column: VALUE, order: ASC }]) {
+            id
+            value
+        }
+    }
+`
+
+export async function getAllCategories() {
+    const variables = {
+        key: NEXT_PUBLIC_KEY,
+    }
+
+    return await request(NEXT_PUBLIC_GRAPHQL, ALL_CATEGORIES, variables)
+}
+
 export async function getProducts() {
     const {
         NEXT_PUBLIC_GRAPHQL,
@@ -109,8 +126,8 @@ export async function createProduct(data) {
         is_active: true,
         value: data.text,
         slug: data.slug,
-        // parentableType: 'menu',
-        // parentableId: data.selectedParent,
+        parentableType: 'category',
+        parentableId: data.selectedParent,
         createSeoTitle: {
             key: NEXT_PUBLIC_KEY,
             value: data.title,

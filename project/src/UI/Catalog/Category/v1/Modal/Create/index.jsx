@@ -34,22 +34,6 @@ const CreateItemCategory = () => {
         description,
     }
 
-    const handleAddCategory = e => {
-        e.preventDefault()
-        if (text.trim().length) {
-            addCategory({
-                variables: {
-                    key,
-                    is_active: true,
-                    value: text,
-                    // slug: slugify(text.translit()),
-                    // parentableType: 'rubric',
-                    // parentableId: Number(selectedParent),
-                },
-            })
-            setText('')
-        }
-    }
     const cancelButtonRef = useRef(null)
 
     return (

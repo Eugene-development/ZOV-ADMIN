@@ -83,14 +83,13 @@ export default function Example() {
                                     className="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
                                     aria-hidden="true"
                                 />
-                                {/* <input
+                                <input
                                     id="search-field"
                                     className="block h-full w-full border-0 py-0 pl-8 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
                                     placeholder="Поиск..."
                                     type="search"
-                                    name="search"
-
-                                /> */}
+                                    name="search-new"
+                                />
                             </div>
                             <div className="flex items-center gap-x-4 lg:gap-x-6">
                                 <button

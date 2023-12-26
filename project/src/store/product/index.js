@@ -13,9 +13,9 @@ const visibleReadProductModal = create(set => ({
 
 const visibleCreateProductModal = create(set => ({
     currentVisibleCreateProductModal: false,
-    allProduct: [],
-    openVisibleCreateProductModal: allProduct => {
-        set(() => ({ allProduct }))
+    allCategory: [],
+    openVisibleCreateProductModal: allCategory => {
+        set(() => ({ allCategory }))
         set(() => ({ currentVisibleCreateProductModal: true }))
     },
     closeVisibleCreateProductModal: () =>
