@@ -146,6 +146,67 @@ export async function createProduct(data) {
     revalidatePath('/products')
 }
 
+const UPDATE_PRODUCT = gql`
+    mutation update_product(
+        $id: UUID!
+        $key: UUID!
+        $is_active: Boolean
+        $value: String!
+        $slug: String
+        $parentableType: String
+        $parentableId: UUID
+        $updateSeoTitle: UpdateSeoTitleInput!
+        $updateSeoDescription: UpdateSeoDescriptionInput!
+    ) {
+        updateProduct(
+            input: {
+                id: $id
+                key: $key
+                is_active: $is_active
+                value: $value
+                slug: $slug
+                parentable_type: $parentableType
+                parentable_id: $parentableId
+                seoTitle: { update: $updateSeoTitle }
+                seoDescription: { update: $updateSeoDescription }
+            }
+        ) {
+            value
+        }
+    }
+`
+
+export async function updateProduct(data) {
+    // console.log(data)
+    const variables = {
+        id: data.id,
+        key: NEXT_PUBLIC_KEY,
+        is_active: true,
+        value: data.text,
+        slug: data.slug,
+        parentableType: 'category',
+        parentableId: data.selectedParent,
+        updateSeoTitle: {
+            id: data.idTitle,
+            key: NEXT_PUBLIC_KEY,
+            value: data.title,
+        },
+        updateSeoDescription: {
+            id: data.idDescription,
+            key: NEXT_PUBLIC_KEY,
+            value: data.description,
+        },
+    }
+
+    await request(
+        NEXT_PUBLIC_GRAPHQL,
+        UPDATE_PRODUCT,
+        variables,
+        requestHeaders,
+    )
+    revalidatePath('/products')
+}
+
 const DELETE_PRODUCT = gql`
     mutation delete_product($id: UUID!) {
         deleteProduct(id: $id) {

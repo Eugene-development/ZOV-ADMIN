@@ -2,7 +2,7 @@
 import Toggle from './Toggle'
 import ModalRead from './Modal/Read'
 import ModalCreate from './Modal/Create'
-// import ModalUpdate from './Modal/Update'
+import ModalUpdate from './Modal/Update'
 import ModalDelete from './Modal/Delete'
 
 import { useProductStore } from '@/store/product'
@@ -25,7 +25,7 @@ export default ({ data, allCategory }) => {
         <>
             <ModalRead />
             <ModalCreate />
-            {/* <ModalUpdate /> */}
+            <ModalUpdate />
             <ModalDelete />
             <div className="mt-4 p-4 sm:p-6 lg:p-8">
                 <div className="sm:flex sm:items-center">
@@ -84,17 +84,7 @@ export default ({ data, allCategory }) => {
                                             </svg>
                                         </button>
 
-                                        {/* <button
-                                                    type="button"
-                                                    className="inline-flex items-center rounded border border-gray-300 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30"
-                                                >
-                                                    Удалить
-                                                </button> */}
                                         <button
-                                            // onClick={() => {
-
-                                            //     }
-                                            // }
                                             type="button"
                                             className="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-red-500 bg-white hover:bg-red-200 focus:outline-none border-red-300 focus:shadow-outline-red active:bg-red-200 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                         >
@@ -230,14 +220,12 @@ export default ({ data, allCategory }) => {
                                                         </svg>
                                                     </button>
                                                     <button
-                                                        // onClick={() => {
-                                                        //     is_visible_update_rubric(true)
-                                                        //     current_id_rubric(item.id)
-                                                        //     current_value_rubric(item.value)
-                                                        //     current_parent_value_rubric(item.parent.value)
-                                                        //     current_parent_id_rubric(item.parent.id)
-                                                        //     }
-                                                        // }
+                                                        onClick={() => {
+                                                            openVisibleUpdateProductModal(
+                                                                item,
+                                                                allCategory,
+                                                            )
+                                                        }}
                                                         type="button"
                                                         className="mx-2 inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-blue-500 bg-blue-50 hover:bg-blue-200 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-blue-200 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                     >
